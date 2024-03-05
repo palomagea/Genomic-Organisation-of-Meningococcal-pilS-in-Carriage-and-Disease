@@ -1,28 +1,33 @@
 #This script breaks the genome into windows, extracts the reads that map across the whole window and calculates the depth at each position. 
 #The window name, and averages including variance are calculated for each window and recorded in the output file "averages per window".
 #The sample variance of each window across the genome can be plotted to look at the variance across the genome.
-#Windows with high variance signal that there are deletions within that region. 
+#Windows with high variance signal that there are deletions within that region.
+#Need to set the variables isolate name, whole genome fasta, whole genome alignment file
 
 #This script works with the "make_sliding_windows.py" script to generate a list of the windows for the genome to be broken into
 #This can be edited to change the window size and step across the genome.
 
 #!/bin/bash
 
-#Variables to set:
-allreads_bam="path_and_name_of_whole_genome_alignment_file" #this is the alignment file of all the nanopore fastq reads aligned to the consensus genome assembly
-isolate="name_of_the_isolate or sample" #this will be the name of the folder that all the output goes into
+####################Variables to set: ######################
+isolate="name_of_the_isolate or sample" #This will be the name of the folder that all the output goes into
+WG_fasta="name_and_path_of_the_whole_genome_fasta_file"
+allreads_bam="path_and_name_of_whole_genome_alignment_file" #This is the alignment file of all the nanopore fastq reads aligned to the consensus genome assembly
 
 #Load modules
 module load python/3.7.3
 module load bedtools/2.31.0
 module load samtools/1.9
 
+#Set the working directory with the scripts saved in it 
+path_dir=$(pwd)
+
 #Make directory for everything to save in
 mkdir ${isolate}
 cd ${isolate}
 
 #Use python script to create a WG_sliding windows query.bed file of the windows that will span across the whole genome, this can be edited to change window step and size
-python make_sliding_windows.py
+${path_dir}/python make_sliding_windows.py ${isolate} ${WG_fasta} ${path_dir}/${isolate}/${isolate}_WG_windows_query.bed
 
 #Use the WG_sliding windows query file and iterate through each window defined in the query file 
 #For each window pull out all of the reads that map completely across that window and make separate bam alignment files for each window with the reads mapping fully across
