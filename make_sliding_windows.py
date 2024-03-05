@@ -1,9 +1,12 @@
-## this script should take the whole genome fasta file and create a query.bed tab delimited file with the start and end positions of the sliding windows 
+#This script takes the whole genome fasta file and creates a query.bed tab delimited file with the start and end positions of the sliding windows 
 
 from Bio import SeqIO
 import os
+import sys
 
-isolate = input("input isolate name ")
+isolate = sys.argv[1]
+whole_genome_fasta = sys.argv[2]
+query_bed = sys.argv[3] 
 path = "/NGS/active/IPL/MENINGO/analysis/paloma/2023/"
 filename = "_corrected_consensus.fasta"
 deletions_folder = "deletions_across_genome"
