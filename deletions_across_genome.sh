@@ -1,16 +1,17 @@
-## this script will take bed files for sliding widows across the genome, extract the reads that span the whole window and look for deletions
-## should be able to identify regions that have more deletions than others (signalling recombination)
+#This script breaks the genome into windows, extracts the reads that map across the whole window and calculates the depth at each position. 
+#The window name, mean, mode and median coverage, sample_variance and standard_deviation of coverage per window and minimum and maximum covergae are calculated for each window and recorded in the output file "averages per window".
+#The sample variance of each window across the genome can be plotted to look at the variance across the genome.
+#Windows with high variance signal that there are deletions within that region. 
+
+#This script works with the "make_sliding_windows.py" script to generate a list of the windows for the genome to be broken into
+#This can be edited to change the window size and step across the genome.
 
 #!/bin/bash
 
-#start in correct folder
-path_dir="/NGS/active/IPL/MENINGO/analysis/paloma/2023"
-echo Enter isolate name
-read isolate
+#Variables to set:
+allreads_bam="path_and_name_of_whole_genome_alignment_file" #this is the alignment file of all the nanopore fastq reads aligned to the consensus genome assembly
+isolate="name_of_the_isolate or sample" #this will be the name of the folder that all the output goes into
 
-allreads_bam="${path_dir}/${isolate}/${isolate}_allreads.bam"
-
-cd ${path_dir}/deletions_across_genome
 mkdir ${isolate}
 cd ${isolate}
 
@@ -19,7 +20,7 @@ module load python/3.7.3
 module load bedtools/2.31.0
 module load samtools/1.9
 
-python ${path_dir}/deletions_across_genome/make_sliding_windows.py
+python make_sliding_windows.py
 
 #use the WG_sliding windows query file and iterate through each window in the file to pull out all of the reads that map completely across that window
 #make separate bam files for each window of only the reads mapping fully across and then get the depth of coverage across each windows bam file
