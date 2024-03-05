@@ -10,9 +10,11 @@
 #!/bin/bash
 
 ####################Variables to set: ######################
-isolate="name_of_the_isolate or sample" #This will be the name of the folder that all the output goes into
+isolate="name_of_the_isolate_or_sample" #This will be the name of the folder that all the output goes into
 WG_fasta="name_and_path_of_the_whole_genome_fasta_file"
 allreads_bam="path_and_name_of_whole_genome_alignment_file" #This is the alignment file of all the nanopore fastq reads aligned to the consensus genome assembly
+window_size="set_the_window_size"
+window_step="set_the_window_step"
 
 #Load modules
 module load python/3.7.3
@@ -27,7 +29,7 @@ mkdir ${isolate}
 cd ${isolate}
 
 #Use python script to create a WG_sliding windows query.bed file of the windows that will span across the whole genome, this can be edited to change window step and size
-${path_dir}/python make_sliding_windows.py ${isolate} ${WG_fasta} ${path_dir}/${isolate}/${isolate}_WG_windows_query.bed
+${path_dir}/python make_sliding_windows.py ${isolate} ${WG_fasta} ${path_dir}/${isolate}/${isolate}_WG_windows_query.bed ${window_size} ${window_step}
 
 #Use the WG_sliding windows query file and iterate through each window defined in the query file 
 #For each window pull out all of the reads that map completely across that window and make separate bam alignment files for each window with the reads mapping fully across
