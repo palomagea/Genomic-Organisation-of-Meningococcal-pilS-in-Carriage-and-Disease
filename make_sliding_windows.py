@@ -1,4 +1,5 @@
 #This script takes the whole genome fasta file and creates a query.bed tab delimited file with the start and end positions of the sliding windows 
+#It works with the deletions_across_genome.sh script
 
 from Bio import SeqIO
 import os
@@ -9,8 +10,8 @@ whole_genome_fasta = sys.argv[2]
 query_bed = sys.argv[3] 
 
 
-window_size = 10000
-step_size = 500
+window_size = sys.argv[4]
+step_size = sys.argv[5]
 
 
 with open (query_bed, 'w') as bed_file:
