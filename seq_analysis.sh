@@ -67,7 +67,7 @@ samtools index ${isolate}_allreads.bam
 #The txt file has three columns: contig name, position and depth at that positon
 samtools depth -aa ${isolate}_allreads.bam > ${isolate}_coverage.txt
 
-#Generate a txt file with the lengths of each read mapped to the genome
+#Generate txt files with the lengths of each read mapped to the genome
 samtools view -F 4 ${isolate}_allreads.bam | cut -f 10 | perl -ne 'chomp;print length ($_). "\n"' | sort -n | uniq -c > ${isolate}_numberreads_readlength.txt #a txt file is made with two columns, the length of the read (right column) and the number of reads that are that length (left column)
 samtools view -F 4 ${isolate}_allreads.bam | awk '{print length($10)}' | sort -n > listreadlengths.txt #a txt file is generated that has the length of every mapped read on a new line
 
