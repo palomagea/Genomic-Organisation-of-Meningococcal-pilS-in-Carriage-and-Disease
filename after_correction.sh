@@ -5,7 +5,7 @@
 #!/bin/bash
 
 ######### Set the variables #########
-isolate="the_name_of_the_isolate_or_experiment" #Multiple isolates were sequenced in the same run with different barcodes. This attaches the isolate name to the sequences for that barcode
+isolate="the_name_of_the_isolate_or_experiment" #Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
 
 #Set the working directory with the scripts saved in it 
 path_dir=$(pwd)
