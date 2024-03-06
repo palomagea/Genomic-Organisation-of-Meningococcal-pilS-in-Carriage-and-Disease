@@ -24,19 +24,15 @@ cd $path_dir/$isolate
 mkdir annotation
 cp ${isolate}_corrected_consensus.fasta $path_dir/$isolate/annotation
 cd annotation
-
-module load prokka/1.14.5
 prokka ${isolate}_corrected_consensus.fasta --genus neisseria -- prefix $isolate
 
-#make sam bam bai folders index
-#map the filtered reads onto the consensus assembly to make a bam file 
-
-
+#An alignment file is generated of the filtered fastq reads mapped to the consensus assembly 
 cd $path_dir/$isolate
-minimap2 -ax map-ont $path_dir/$isolate/${isolate}_corrected_consensus.fasta $path_dir/$isolate/${isolate}_filt.fastq | samtools view -bS | samtools sort -o ${isolate}_allreads.bam
+minimap2 -ax map-ont $path_dir/$isolate/${isolate}_corrected_consensus.fasta $path_dir/$isolate/${isolate}_filt.fastq | samtools view -bS | samtools sort -o ${isolate}_allreads.bam #Minimap was used to map the fastq reads back onto the assembly
 samtools index ${isolate}_allreads.bam 
 
-#depth of coverage all bps txt file ref seq, base index, coverage as headers 
+#Generate a txt file from the alignment file that contains the depth at each genomic position. 
+#The txt file has three columns: contig name, position and depth at that positon
 samtools depth -aa ${isolate}_allreads.bam > ${isolate}_coverage.txt
 
 #get txt file with frequency and num of reads mapped to genome
