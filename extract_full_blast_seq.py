@@ -1,17 +1,21 @@
-path = "/NGS/active/IPL/MENINGO/analysis/paloma/2023/"
-isolate = input("input isolate name ")
-filename = "/"+isolate+"_pilS_nt_full_blast_sequences"
+#This script works with the extract_pilS_annotation.sh pipeline to extract the sequences of the PubMLST alleles from the database that align to the pilS region
+#The fasta file of these sequences will later be uploaded to geneious to annotate the pilS region
+
+import sys 
+
+#These variables are set in the extract_pilS_annotation.sh pipeline
+blast_seq_file = sys.argv[1]
+output_file = sys.argv[2]
 
 import pandas as pd
-df = pd.read_csv(path+isolate+filename, delimiter = "\t", header=None)
+df = pd.read_csv(blast_seq_file, delimiter = "\t", header=None)
 df.columns = ["sseqid", "qstart", "qend", "sseq"]
 
 
 import sys
 original_stdout = sys.stdout
-str1 = path+isolate+ "/" + isolate + "_pilS_nt_full_blast_seq.fasta"
 
-with open(str1, 'w') as f:
+with open(output_file, 'w') as f:
         sys.stdout = f
         for index, row in df.iterrows():
             seq_id = row["sseqid"]
