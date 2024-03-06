@@ -13,7 +13,10 @@ path_dir=$(pwd)
 
 #Load modules 
 module load prokka/1.14.5
-
+module load samtools/1.9
+module load minimap2/2.24
+module load python/3.7.3
+module load bedtools2/2.19.1
 
 cd $path_dir/$isolate
 
@@ -27,10 +30,7 @@ prokka ${isolate}_corrected_consensus.fasta --genus neisseria -- prefix $isolate
 
 #make sam bam bai folders index
 #map the filtered reads onto the consensus assembly to make a bam file 
-module load samtools/1.9
-module load minimap2/2.24
-module load python/3.7.3
-module load bedtools2/2.19.1
+
 
 cd $path_dir/$isolate
 minimap2 -ax map-ont $path_dir/$isolate/${isolate}_corrected_consensus.fasta $path_dir/$isolate/${isolate}_filt.fastq | samtools view -bS | samtools sort -o ${isolate}_allreads.bam
