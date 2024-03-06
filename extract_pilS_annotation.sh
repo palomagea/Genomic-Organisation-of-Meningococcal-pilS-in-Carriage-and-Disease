@@ -23,7 +23,7 @@ module load ncbi-blast/2.6.0
 
 #Run python script to make a query bed file that contains the contig name and start and end positions of pilS
 cd ${isolate}
-python ${path_dir}/make_query.py
+python ${path_dir}/make_query.py ${isolate} ${pilS_start} ${pilS_end} ${pilS_contig} ${path_dir}/${isolate}/query.bed
 
 #Make a genome file that contains the length of the genome
 awk '/^>/{if (l!="") print l; print; l=0; next}{l+=length($0)}END{print l}' $path_dir/$isolate/${isolate}_corrected_consensus.fasta > $path_dir/$isolate/genome_length.txt #Get the length of genome and save to a txt file
