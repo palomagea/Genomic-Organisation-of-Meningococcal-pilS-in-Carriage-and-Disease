@@ -3,6 +3,7 @@
 
 #!/bin/bash
 
+######### Set the variables #########
 run="set_the_name_of_the_run" #This name is used to name the pycoQC summary file for this run and distinguish it from the other sequencing runs
 isolate="the_name_of_the_isolate_or_experiment" #Multiple isolates were sequenced in the same run with different barcodes. This attaches the isolate name to the sequences for that barcode
 seq_run_path="the_name_and_path_where_the_fastq_runs_are_saved" #This is the path to folder of fastq files with the barcode corresponding to this isolate
