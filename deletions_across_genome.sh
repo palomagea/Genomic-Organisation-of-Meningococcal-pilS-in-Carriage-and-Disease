@@ -24,12 +24,13 @@ module load python/3.7.3
 module load bedtools/2.31.0
 module load samtools/1.9
 
-#Make directory for everything to save in
-mkdir ${isolate}
-cd ${isolate}
+#Make a directory for the output to be saved in
+cd ${path_dir}/${isolate}
+mkdir deletions
+cd deletions
 
 #Use python script to create a WG_sliding windows query.bed file of the windows that will span across the whole genome, this can be edited to change window step and size
-${path_dir}/python make_sliding_windows.py ${isolate} ${WG_fasta} ${path_dir}/${isolate}/${isolate}_WG_windows_query.bed ${window_size} ${window_step}
+${path_dir}/python make_sliding_windows.py ${isolate} ${WG_fasta} ${path_dir}/${isolate}/deletions/${isolate}_WG_windows_query.bed ${window_size} ${window_step}
 
 #Use the WG_sliding windows query file and iterate through each window defined in the query file 
 #For each window pull out all of the reads that map completely across that window and make separate bam alignment files for each window with the reads mapping fully across
@@ -53,7 +54,7 @@ while IFS=$'\t' read -r chrom start end; do
     bedtools intersect -a "${path_dir}/${isolate}/${isolate}_allreads.bed" -b "$query_bed" -F 1 > "${window_name_clean}.bed" #Search the WG alignment file for the reads that map only across the specified window 
 
     if [ -s "${window_name_clean}.bed" ]; then #This if statement makes sure there is content in the bed file of reads mapping across the window by checking if the file size is greater than 0 
-        python ${path_dir}/deletions_across_genome/extract_seq_names_from_bed.py ${window_name_clean}.bed ${window_name_clean}_read_names.txt #This python script extracts the sequence names from the whole genome alignment file that map across the specified window and adds them to a new file
+        python ${path_dir}/extract_seq_names_from_bed.py ${window_name_clean}.bed ${window_name_clean}_read_names.txt #This python script extracts the sequence names from the whole genome alignment file that map across the specified window and adds them to a new file
         samtools view -H "$allreads_bam" > "header_${window_name_clean}.sam" #This takes the header from the whole genome alignment file and saves it so it can be added to the window sam file later
         samtools view "$allreads_bam" | grep -f "${window_name_clean}_read_names.txt" > "$window_sam" #The reads in the whole genome alignment file with sequence names that map across the specified window are added to the window sam file
         cat "header_${window_name_clean}.sam" "$window_sam" > "${window_name_clean}_with_header.sam" #The header is added to the sam file for the specified window so the format is correct 
