@@ -1,4 +1,4 @@
-#This pipeline will extract the sequence of the pilS region from the consensus assembly and count the reads that map the whole way across pilS
+#This pipeline will extract the reads that map fully across the pilS region and count them
 #This pipeline will then annotate pilS with bakta
 #This pipeline will use the blast database of pilS alleles and look for alignments of alleles from this database to pilS, saving the alleles with sequence similarity to upload into Geneious to annotate pilS
 #For this pipeline need to set the genomic region of pilS from the prokka annotation of fbp and lpxC and add 1kb to each side
@@ -35,9 +35,8 @@ bedtools intersect -a ${isolate}_allreads.bed -b query.bed -F 1 > ${isolate}_pil
 #Run python script that counts reads mapping pilS from the pilS.bed file 
 python ${path_dir}/count_pilS_reads.py
 
-#make pilS fasta
-cd $isolate 
-bedtools getfasta -fi $path_dir/$isolate/${isolate}_corrected_consensus.fasta -bed query.bed -fo ${isolate}_pilS.fasta 
+#Extract the pilS sequence from the whole genome fasta
+bedtools getfasta -fi $path_dir/$isolate/${isolate}_corrected_consensus.fasta -bed query.bed -fo ${isolate}_pilS.fasta #The query bed file containing the pilS region is used to extract the pilS fasta from the whole genome fasta
 
 #do bakta run on pilS fasta
 cd ${path_dir}/${isolate}
