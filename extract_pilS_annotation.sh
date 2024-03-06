@@ -38,15 +38,14 @@ python ${path_dir}/count_pilS_reads.py
 #Extract the pilS sequence from the whole genome fasta
 bedtools getfasta -fi $path_dir/$isolate/${isolate}_corrected_consensus.fasta -bed query.bed -fo ${isolate}_pilS.fasta #The query bed file containing the pilS region is used to extract the pilS fasta from the whole genome fasta
 
-#do bakta run on pilS fasta
-cd ${path_dir}/${isolate}
-mkdir bakta
+#Use Bakta to annotate the pilS region
+mkdir bakta #make a directory for the Bakta annotation 
 cd bakta
-bakta --output ${isolate}_pilS --genus Neisseria ${path_dir}/${isolate}/${isolate}_pilS.fasta 
+bakta --output ${isolate}_pilS --genus Neisseria ${path_dir}/${isolate}/${isolate}_pilS.fasta #Set the genus as Neisseria
 
-#full blast to get all sequences that align  
-blastn -db /NGS/active/IPL/MENINGO/analysis/paloma/pilS_nt_db/pilS_nt_db -query ${isolate}_pilS.fasta -outfmt "6 sseqid qstart qend sseq" -out ${isolate}_pilS_nt_full_blast_sequences -max_target_seqs 6000
+#Use BLAST to look for alleles in the database with sequence similarity to the pilS region 
+blastn -db /NGS/active/IPL/MENINGO/analysis/paloma/pilS_nt_db/pilS_nt_db -query ${isolate}_pilS.fasta -outfmt "6 sseqid qstart qend sseq" -out ${isolate}_pilS_nt_full_blast_sequences -max_target_seqs 6000 #Outfmt includes the sequence ID and the sequence of the alleles that matched to pilS
 
-#run python script to get the sequences from the full blast   
-python ${path_dir}/extract_full_blast_seq.py
+#Run python script to extract just the allele sequences that matched to pilS from the BLAST result
+python ${path_dir}/extract_full_blast_seq.py 
 
