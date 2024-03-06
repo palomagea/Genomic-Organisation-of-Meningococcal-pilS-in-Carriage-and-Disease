@@ -23,6 +23,8 @@ This pipeline will
 - Print the average length of mapped reads
 - Print the length of the longest mapped read
 
+Despite having to repeat many of these steps after correcting with Illumina, this pipeline has been left to show how the genomes were polished with Medaka and Racon and what the flye assemblies looked like before and after Illumina correction. 
+
 2. Illumina Corrections
 As outlined in the thesis, there were issues encountered when polishing with Medaka. The filtered fastq reads were retained in the directory for that isolat,e and the rest of the output from the first pipeline was into a new sub-directory "not_Illumina_corrected". This was later used to compare the Illumina corrected sequence with the not Illumina corrected sequence.
 The following steps were carried out to use the Illumina reads to correct the flye assembly.
