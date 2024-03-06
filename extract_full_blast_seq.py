@@ -3,7 +3,6 @@
 
 import sys 
 import pandas as pd
-import sys
 
 #These variables are set in the extract_pilS_annotation.sh pipeline
 blast_seq_file = sys.argv[1]
