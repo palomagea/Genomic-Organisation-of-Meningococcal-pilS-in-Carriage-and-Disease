@@ -35,10 +35,8 @@ samtools index ${isolate}_allreads.bam
 #The txt file has three columns: contig name, position and depth at that positon
 samtools depth -aa ${isolate}_allreads.bam > ${isolate}_coverage.txt
 
-#get txt file with frequency and num of reads mapped to genome
+#Generate txt files with the lengths of each read mapped to the genome
 samtools view -F 4 ${isolate}_allreads.bam | cut -f 10 | perl -ne 'chomp;print length ($_). "\n"' | sort -n | uniq -c > ${isolate}_numberreads_readlength.txt
-
-#get average reads mapped to genome 
 samtools view -F 4 ${isolate}_allreads.bam | awk '{print length($10)}' | sort -n > listreadlengths.txt 
 
 #run python scripts for analysis need to be in folder with scripts 
