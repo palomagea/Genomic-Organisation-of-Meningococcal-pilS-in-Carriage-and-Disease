@@ -37,4 +37,4 @@ cd ${path_dir}/${isolate}
 blastn -db /NGS/active/IPL/MENINGO/analysis/paloma/pilS_nt_db/pilS_nt_db -query ${isolate}_class_II_pilE.fasta -outfmt "6 sseqid qstart qend sseq" -out ${isolate}_class_II_pilE_nt_full_blast_sequences -max_target_seqs 6000
 
 #Run python script to extract just the allele sequences that matched to pilE from the BLAST result
-python ${path_dir}/extract_pilE_full_blast_seq.py 
+python ${path_dir}/extract_pilE_full_blast_seq.py ${path_dir}/${isolate}/${isolate}__class_II_pilE_nt_full_blast_sequences ${path_dir}/${isolate}/${isolate}_class_II_pilE_nt_full_blast_seq.fasta
