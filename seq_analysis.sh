@@ -35,7 +35,7 @@ cd ${path_dir}/$isolate
 gunzip $isolate.fastq.gz
 NanoFilt -q 12 --length 5000 $isolate.fastq > ${isolate}_filt.fastq
 
-#Use to assemble genome and polish with Medaka and Racon 
+#Use to Flye to assemble the genome and polish with Medaka and Racon 
 flye --nano-raw ${isolate}_filt.fastq --threads 20 --iterations 3 --out-dir ${isolate}_flye #Flye is run on the filtered fastq reads and saved in an output directory
 minimap2 -x map-ont -t 20 ${isolate}_flye/assembly.fasta ${isolate}_filt.fastq > ${isolate}_flye/assembly_racon.paf #Minimap is used to map the filtered fastq onto the flye assembled genome and saved in paf format to use with Racon
 racon -m 8 -x -6 -g -8 -w 500 -t 20 ${isolate}_filt.fastq ${isolate}_flye/assembly_racon.paf ${isolate}_flye/assembly.fasta > ${isolate}_flye/racon_on_flye.fasta #Racon is used to polish the flye assembly
@@ -60,7 +60,8 @@ cd $path_dir/$isolate
 minimap2 -ax map-ont $path_dir/$isolate/${isolate}_consensus.fasta $path_dir/$isolate/${isolate}_filt.fastq | samtools view -bS | samtools sort -o ${isolate}_allreads.bam #Minimap was used to map the fastq reads back onto the assembly
 samtools index ${isolate}_allreads.bam 
 
-#depth of coverage all bps txt file ref seq, base index, coverage as headers 
+#Generate a txt file from the alignment file that contains the depth at each genomic position. 
+#The txt file has 3 columns: contig name, position and depth at that positon
 samtools depth -aa ${isolate}_allreads.bam > ${isolate}_coverage.txt
 
 #get txt file with the numbers of reads of each length mapped to genome
