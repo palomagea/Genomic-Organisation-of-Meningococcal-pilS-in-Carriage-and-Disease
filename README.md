@@ -8,10 +8,10 @@ To complete the analysis outlined in the thesis, the following steps have been c
 
 1. Run the seq_analysis.sh pipeline
 Set the following variables within the pipeline before use
-  run="set_the_name_of_the_run" #This name is used to name the pycoQC summary file for this run and distinguish it from the other sequencing runs
-  isolate="the_name_of_the_isolate_or_experiment" #Multiple isolates were sequenced in the same run with different barcodes. This attaches the isolate name to the sequences for that barcode
-  seq_run_path="the_name_and_path_where_the_fastq_runs_are_saved" #This is the path to folder of fastq files with the barcode corresponding to this isolate 
-  seq_summary="the_name_and_path_of_the_sequencing_summary_file_for_this_run" #The path to the sequencing summary file for this run and the name of the summary file
+run="set_the_name_of_the_run" #This name is used to name the pycoQC summary file for this run and distinguish it from the other sequencing runs
+isolate="the_name_of_the_isolate_or_experiment" #Multiple isolates were sequenced in the same run with different barcodes. This attaches the isolate name to the sequences for that barcode
+seq_run_path="the_name_and_path_where_the_fastq_runs_are_saved" #This is the path to folder of fastq files with the barcode corresponding to this isolate
+seq_summary="the_name_and_path_of_the_sequencing_summary_file_for_this_run" #The path to the sequencing summary file for this run and the name of the summary file
 
 This pipeline will
 - Generate a pycoQC sequencing summary report
