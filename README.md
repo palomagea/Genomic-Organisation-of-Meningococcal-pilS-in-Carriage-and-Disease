@@ -60,9 +60,10 @@ The following steps were carried out to make the database
 module load ncbi-blast/2.6.0
 makeblastdb -in pilS_nt_db.fas -dbtype nucl -input_type fasta -out pilS_nt_db
 
-
+The pilS nucleotide database generated was saved and is used in the extract_pilS_annotation.sh pipeline below
 
 7. Run the extract_pilS_annotation.sh pipeline
 This pipeline uses the pilS region defined above and counts all the reads mapping pilS and generates the annotation files needed to upload into Geneious to annotate the pilS region
 Set the following variables within the pipeline before use
+
 
