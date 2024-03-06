@@ -1,6 +1,6 @@
-#!/bin/bash
 #this was the first pipeline used to analyse the sequencing run and make a genome assembly from the fastq files
 #this pipeline was before the issues with medaka were discovered
+#!/bin/bash
 
 #start in correct folder
 echo Enter pwd for the folder you want to be working in 
