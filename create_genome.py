@@ -1,10 +1,11 @@
 #This script works with the extract_pilS_annotation.sh pipeline to create a genome file containing the length of the whole genome
 
-isolate = input("input isolate name ")
-path = "/NGS/active/IPL/MENINGO/analysis/paloma/2023/"
-filename = "genome_length.txt"
+import sys 
 
-with open(path + isolate + "/" + filename, 'r') as openfile:
+#These variables are set in the extract_pilS_annotation.sh pipeline
+genome_length = sys.argv[1]
+
+with open(genome_length, 'r') as openfile:
     rfile = openfile.readlines()
     length = rfile[1].strip()  
 
