@@ -80,6 +80,23 @@ This pipeline will
 7. Run the class_II_pilE_extraction.sh pipeline
 For this pipeline to run need to know the genomic location of the pilE gene in the class II isolates, located using the prokka annotation and then include a buffer of +1kb on either side
 Set the following variables within the pipeline before use
+isolate="the_name_of_the_isolate_or_experiment" #Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
+pilE_start="the_genomic_start_positon_of_pilS" #The positon in bp of the start of pilS (including fbp and lpxC +1kb on either end as a buffer)
+pilE_end="the_genomic_end_position_of_pilS" #The positon in bp of the end of pilS (including fbp and lpxC +1kb on either end as a buffer)
+pilE_contig="the_contig_that_pilS_is_on" #Very few of the isolates had more than one contig. If there was only one contig set "contig_1". In isolates with more than one contig set the contig pilS was on.
+
+This pipeline will
+- Extract the reads that map the whole way across pilE
+- Extract the fasta sequence of pilE
+- Annotate the pilE region with Bakta
+- Perform a BLAST alignment of the PubMLST alleles in the database to the pilS region
+- Save all of the matched alleles into a fasta file
+
+8. Annotate in Geneious
+The pilS regions of all isolates and the pilE region of the class II isolates were annotated using Geneious prime with the methods outlined in the thesis.
+All of the files needed for this annotation were generated in the pipelines above
+
+9. Run the align_RNA_seq.sh pipeline
 
 
 
