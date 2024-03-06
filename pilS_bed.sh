@@ -17,7 +17,7 @@ module load samtools/1.9
 cd ${path_dir}/${isolate}
 
 #Get txt of all the sequence names of sequences spanning pilS from the pilS.bed file and then add to a pilS_read_names.txt file 
-python ${path_dir}/extract_sequence_name_from_bed.py 
+python ${path_dir}/extract_sequence_name_from_bed.py ${path_dir}/${isolate}/${isolate}_pilS.bed ${path_dir}/${isolate}/pilS_read_names.txt
 
 #Use the list of sequence names to get a sam file containing the reads that map pilS from the original allreads bam file 
 samtools view -H ${isolate}_allreads.bam > header_for_pilS_sam.txt #Need to make a header first for formatting 
