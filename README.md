@@ -97,6 +97,39 @@ The pilS regions of all isolates and the pilE region of the class II isolates we
 All of the files needed for this annotation were generated in the pipelines above
 
 9. Run the align_RNA_seq.sh pipeline
+Set the following variables within the pipeline before use
+isolate="the_name_of_the_isolate_or_experiment" Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
+pair_1="the_name_and_path_of_RNA_seq_reads_pair_1" #Path to and name of the RN Aseq reads pair 1
+pair_2="the_name_and_path_of_RNA_seq_reads_pair_2" #Path to and name of the RNA seq reads pair 2
+
+This pipeline will
+- Align the RNA seq reads to the genome assembly using BWA
+- Filter the RNA seq reads in the alignment file
+
+10. FeatureCounts
+The consensus annotations of pilS were downloaded from geneious prime and reformatted into a gtf tab delimited file
+An example of the file is:
+##gff-version 2
+##sequence-region contig_1 1 2209937
+contig_1	Geneious	gene	291821	292150	.	+	.	gene_id "fbp"
+contig_1	Geneious	gene	292175	292544	.	+	.	gene_id "pilS_6"
+contig_1	Geneious	gene	292590	292949	.	+	.	gene_id "pilS_5"
+contig_1	Geneious	gene	293175	293560	.	+	.	gene_id "pilS_4"
+contig_1	Geneious	gene	293624	293983	.	+	.	gene_id "pilS_3"
+contig_1	Geneious	gene	294029	294394	.	+	.	gene_id "pilS_2"
+contig_1	Geneious	gene	294729	295149	.	+	.	gene_id "pilS_1"
+contig_1	Geneious	gene	295965	296498	.	+	.	gene_id "pilE"
+contig_1	Geneious	gene	297674	298597	.	+	.	gene_id "lpxC"
+
+FeatureCounts was then used to count the number of reads mapping to the genomic features 
+For non stranded
+featureCounts -p -t gene -a path_to_gtf_file.gtf -o isolate_RNA_counts.txt isolate_RNA_seq_aligned_to_reference.clean.sorted.bam
+
+For stranded 
+featureCounts -p -s 2 -t gene -a contig_1.gtf -o isolate_RNA_counts.txt isolate_RNA_seq_aligned_to_reference.clean.sorted.bam
+
+11. Run pilS_bed.sh pipeline
+
 
 
 
