@@ -12,10 +12,7 @@ query_bed = sys.argv[5]
 
 original_stdout = sys.stdout
 
-path = str("/NGS/active/IPL/MENINGO/analysis/paloma/2023/")
-
-str1 = path+isolate+ "/query.bed"
-query_str = "contig_1\t" + start_pilS + "\t" + end_pilS
+query_str = pilS_contig +"\t" + start_pilS + "\t" + end_pilS
 fixed_query_str = query_str.strip()
 
 with open(str1, 'w') as f:
