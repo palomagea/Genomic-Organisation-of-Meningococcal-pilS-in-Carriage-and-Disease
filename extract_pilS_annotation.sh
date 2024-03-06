@@ -1,20 +1,12 @@
-#This pipeline will extract the pilS region from the consensus assembly.
-#this pipeline will then annotate pilS with bakta and make a bam file of the reads that map the whole way across pilS and count the reads that map the whole way across pilS
-#it will also get the blast results from the database that have sequence similarity to pilS
+#This pipeline will extract the sequence of the pilS region from the consensus assembly and count the reads that map the whole way across pilS
+#This pipeline will then annotate pilS with bakta
+#This pipeline will use the blast database of pilS alleles and look for alignments of alleles from this database to pilS, saving the alleles with sequence similarity to upload into Geneious to annotate pilS
 #For this pipeline need to set the genomic region of pilS from the prokka annotation of fbp and lpxC and add 1kb to each side
 
 #!/bin/bash
 
-#start in correct folder
-echo Enter pwd for the folder you want to be working in
-read path_dir
 
-#check which isolate you are analysing and set variable name
-
-echo Enter isolate name
-read isolate
-echo Analysing sequence run from isolate $isolate
-
+#Load Modules 
 module load python/3.7.3
 module load bedtools/2.31.0
 module load samtools/1.9
