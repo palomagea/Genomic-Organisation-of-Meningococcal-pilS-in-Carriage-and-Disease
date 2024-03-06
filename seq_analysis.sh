@@ -1,6 +1,12 @@
-#this was the first pipeline used to analyse the sequencing run and make a genome assembly from the fastq files
-#this pipeline was before the issues with medaka were discovered
+#This is the first pipeline used to analyse the sequencing run and make a genome assembly from the fastq files
+#This pipeline was used before the issues with medaka were discovered
+
 #!/bin/bash
+
+run="set_the_name_of_the_run" #This name is used to name the pycoQC summary file for this run and distinguish it from the other sequencing runs
+isolate="the_name_of_the_isolate_or_experiment" #Multiple isolates were sequenced in the same run with different barcodes. This attaches the isolate name to the sequences for that barcode
+seq_run_path="the_name_and_path_where_the_fastq_runs_are_saved" #This is the path to folder of fastq files with the barcode corresponding to this isolate
+seq_summary="the_name_and_path_of_the_sequencing_summary_file_for_this_run" #The path to the sequencing summary file for this run and the name of the summary file
 
 #start in correct folder
 echo Enter pwd for the folder you want to be working in 
