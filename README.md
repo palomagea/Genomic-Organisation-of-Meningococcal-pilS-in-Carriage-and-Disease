@@ -62,8 +62,25 @@ makeblastdb -in pilS_nt_db.fas -dbtype nucl -input_type fasta -out pilS_nt_db
 
 The pilS nucleotide database generated was saved and is used in the extract_pilS_annotation.sh pipeline below
 
-7. Run the extract_pilS_annotation.sh pipeline
-This pipeline uses the pilS region defined above and counts all the reads mapping pilS and generates the annotation files needed to upload into Geneious to annotate the pilS region
+6. Run the extract_pilS_annotation.sh pipeline
+For this pipeline to run need to know the boundaries of the pilS region and have created the BLAST database from the PubMLST alleles and saved it as pilS_nt_db
 Set the following variables within the pipeline before use
+isolate="the_name_of_the_isolate_or_experiment" #Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
+pilS_start="the_genomic_start_positon_of_pilS" #The positon in bp of the start of pilS (including fbp and lpxC +1kb on either end as a buffer)
+pilS_end="the_genomic_end_position_of_pilS" #The positon in bp of the end of pilS (including fbp and lpxC +1kb on either end as a buffer)
+pilS_contig="the_contig_that_pilS_is_on" #Very few of the isolates had more than one contig. If there was only one contig set "contig_1". In isolates with more than one contig set the contig pilS was on.
+
+This pipeline will 
+- Extract all of the reads that map the whole way across pilS and count them
+- Extract the fasta sequence of the pilS region
+- Annotate the pilS region with Bakta
+- Perform a BLAST alignment of the PubMLST alleles in the database to the pilS region
+- Save all of the matched alleles into a fasta file
+
+7. Run the class_II_pilE_extraction.sh pipeline
+For this pipeline to run need to know the genomic location of the pilE gene in the class II isolates, located using the prokka annotation and then include a buffer of +1kb on either side
+Set the following variables within the pipeline before use
+
+
 
 
