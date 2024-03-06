@@ -5,6 +5,11 @@
 
 #!/bin/bash
 
+######### Set the variables #########
+isolate="the_name_of_the_isolate_or_experiment" #Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
+
+#Set the working directory with the scripts saved in it 
+path_dir=$(pwd)
 
 #Load Modules 
 module load python/3.7.3
