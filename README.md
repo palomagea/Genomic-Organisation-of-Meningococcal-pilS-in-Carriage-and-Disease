@@ -128,8 +128,28 @@ featureCounts -p -t gene -a path_to_gtf_file.gtf -o isolate_RNA_counts.txt isola
 For stranded 
 featureCounts -p -s 2 -t gene -a contig_1.gtf -o isolate_RNA_counts.txt isolate_RNA_seq_aligned_to_reference.clean.sorted.bam
 
-11. Run pilS_bed.sh pipeline
+11. Run the pilS_bed.sh pipeline
+Set the following variables within the pipeline before use
+isolate="the_name_of_the_isolate_or_experiment" Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
 
+This pipeline will
+- Convert the pilS bed file of reads mapping across pilS to a bam alignment file
+- Calculate the depth of coverage at each position in pilS to look for deletions in the pilS region
+
+12. Run the deletions_across_genome.sh pipeline
+Set the following variables within the pipeline before use
+isolate="name_of_the_isolate_or_sample" #Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
+WG_fasta="name_and_path_of_the_whole_genome_fasta_file" #The genome assembly for the specified isolate
+allreads_bam="path_and_name_of_whole_genome_alignment_file" #This is the alignment file of all the nanopore fastq reads aligned to the consensus genome assembly
+window_size="set_the_window_size" #The size of the window. In this thesis I used 10000 however this can be changed
+window_step="set_the_window_step" #The step between windows. In this thesis I used 500 however this can be changed
+
+This pipeline will
+- Make sliding windows across the genome of the set size and step
+- Extract all of the reads mapping across the whole window and make an alignment file
+- Count the depth of coverage at each position in the window
+- Calculate the variance in depth at each window, the signal for a deletion is high variance in depth
+- Save the averages for each window into a txt file that can be graphed to look at which genomic windows have high variance
 
 
 
