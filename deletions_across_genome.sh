@@ -16,13 +16,13 @@ allreads_bam="path_and_name_of_whole_genome_alignment_file" #This is the alignme
 window_size="set_the_window_size"
 window_step="set_the_window_step"
 
+#Set the working directory with the scripts saved in it 
+path_dir=$(pwd)
+
 #Load modules
 module load python/3.7.3
 module load bedtools/2.31.0
 module load samtools/1.9
-
-#Set the working directory with the scripts saved in it 
-path_dir=$(pwd)
 
 #Make directory for everything to save in
 mkdir ${isolate}
