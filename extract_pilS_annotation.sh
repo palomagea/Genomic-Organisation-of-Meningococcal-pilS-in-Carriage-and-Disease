@@ -1,8 +1,9 @@
-
-#!/bin/bash
-#this pipeline will extract the pilS region from the consensus assembly. need to know the boundaries of where pilS is from the prokka annotation of fbp and lpxC and then add 1kb to each side
+#This pipeline will extract the pilS region from the consensus assembly.
 #this pipeline will then annotate pilS with bakta and make a bam file of the reads that map the whole way across pilS and count the reads that map the whole way across pilS
 #it will also get the blast results from the database that have sequence similarity to pilS
+#For this pipeline need to set the genomic region of pilS from the prokka annotation of fbp and lpxC and add 1kb to each side
+
+#!/bin/bash
 
 #start in correct folder
 echo Enter pwd for the folder you want to be working in
