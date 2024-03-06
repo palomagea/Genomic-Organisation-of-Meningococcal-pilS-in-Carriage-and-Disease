@@ -1,4 +1,4 @@
-#This is the first pipeline used to analyse the sequencing run and make a genome assembly from the fastq files, annotate with prokka and give the average depth, read length and longest read
+#This is the first pipeline used to analyse the sequencing run and make a genome assembly from the fastq files, annotate with prokka and basic assembly statistics, average depth, read length and longest read
 #This pipeline was used before the issues with medaka were discovered
 
 #!/bin/bash
@@ -34,16 +34,15 @@ NanoFilt -q 12 --length 5000 $isolate.fastq > ${isolate}_filt.fastq
 #Use to assemble genome and polish with Medaka and Racon 
 flye --nano-raw ${isolate}_filt.fastq --threads 20 --iterations 3 --out-dir ${isolate}_flye #Flye is run on the filtered fastq reads and saved in an output directory
 minimap2 -x map-ont -t 20 ${isolate}_flye/assembly.fasta ${isolate}_filt.fastq > ${isolate}_flye/assembly_racon.paf #Minimap is used to map the filtered fastq onto the flye assembled genome and saved in paf format to use with Racon
-racon -m 8 -x -6 -g -8 -w 500 -t 20 ${isolate}_filt.fastq ${isolate}_flye/assembly_racon.paf ${isolate}_flye/assembly.fasta > ${isolate}_flye/racon_on_flye.fasta #Racon is used to 
-medaka_consensus -i ${isolate}_filt.fastq -d ${isolate}_flye/racon_on_flye.fasta -o ${isolate}_flye/medakon_on_racon -t 3 -m r941_min_hac_g507
+racon -m 8 -x -6 -g -8 -w 500 -t 20 ${isolate}_filt.fastq ${isolate}_flye/assembly_racon.paf ${isolate}_flye/assembly.fasta > ${isolate}_flye/racon_on_flye.fasta #Racon is used to polish the flye assembly
+medaka_consensus -i ${isolate}_filt.fastq -d ${isolate}_flye/racon_on_flye.fasta -o ${isolate}_flye/medakon_on_racon -t 3 -m r941_min_hac_g507 #Medaka is used to polish the Racon on Flye assembly
 
-
-#copy polished assembly out of folder and into main directory
+#Copy polished assembly out of folder and into main directory
 cp $path_dir/$isolate/*_flye/medakon_on_racon/consensus.fasta $path_dir/$isolate/${isolate}_consensus.fasta
 
-#give some stats about flye assembly like coverage and N50/N90 
-cd $path_dir/$isolate/*_flye
-grep 'Mean coverage\|Reads N50\|Total read length\|Total length' flye.log > $path_dir/$isolate/genome_assembly_stats.txt
+#Give some stats about flye assembly like coverage and N50/N90 
+cd $path_dir/$isolate/*_flye 
+grep 'Mean coverage\|Reads N50\|Total read length\|Total length' flye.log > $path_dir/$isolate/genome_assembly_stats.txt #the Flye log is searched for the mean coverage, N50, total read length and total length 
 
 cd $path_dir/$isolate
 
