@@ -1,21 +1,23 @@
-path = "/NGS/active/IPL/MENINGO/analysis/paloma/2023/"
-isolate = input("input isolate name ")
-filename = "/"+isolate+"_class_II_pilE_nt_full_blast_sequences"
+#This script works with the class_II_pilE_extraction.sh pipeline to extract the sequences of the PubMLST alleles from the database that align to the pilE region
+#The fasta file of these sequences will later be uploaded to geneious to annotate the pilE region
 
+import sys 
 import pandas as pd
-df = pd.read_csv(path+isolate+filename, delimiter = "\t", header=None)
-df.columns = ["sseqid", "qstart", "qend", "sseq"]
-
-
 import sys
-original_stdout = sys.stdout
-str1 = path+isolate+ "/" + isolate + "_class_II_pilE_nt_full_blast_seq.fasta"
 
-with open(str1, 'w') as f:
+#These variables are set in the class_II_pilE_extraction.sh pipeline
+blast_seq_file = sys.argv[1]
+output_file = sys.argv[2]
+
+df = pd.read_csv(blast_seq_file, delimiter = "\t", header=None) #read the blast output into a dataframe
+df.columns = ["sseqid", "qstart", "qend", "sseq"] #name the columns of the dataframe so can call the sequence id names and the sequences below
+
+original_stdout = sys.stdout
+
+with open(output_file, 'w') as f: #create the output file
         sys.stdout = f
-        for index, row in df.iterrows():
+        for index, row in df.iterrows(): #print out all of the sequence id and sequences of the alleles that align to pilS in fasta format 
             seq_id = row["sseqid"]
             sequence = row["sseq"]
             print (">", seq_id, "\n", sequence, sep = '')
         sys.stdout = original_stdout
-
