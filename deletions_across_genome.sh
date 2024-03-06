@@ -11,10 +11,10 @@
 
 ####################Variables to set: ######################
 isolate="name_of_the_isolate_or_sample" #Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
-WG_fasta="name_and_path_of_the_whole_genome_fasta_file"
+WG_fasta="name_and_path_of_the_whole_genome_fasta_file" #The genome assembly for the specified isolate
 allreads_bam="path_and_name_of_whole_genome_alignment_file" #This is the alignment file of all the nanopore fastq reads aligned to the consensus genome assembly
-window_size="set_the_window_size"
-window_step="set_the_window_step"
+window_size="set_the_window_size" #The size of the window. In this thesis I used 10000 however this can be changed
+window_step="set_the_window_step" #The step between windows. In this thesis I used 500 however this can be changed
 
 #Set the working directory with the scripts saved in it 
 path_dir=$(pwd)
