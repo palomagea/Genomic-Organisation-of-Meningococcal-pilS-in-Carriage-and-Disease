@@ -13,8 +13,6 @@ module load python/3.7.3
 module load bedtools/2.31.0
 module load samtools/1.9
 
-python create_genome.py
-
 cd ${path_dir}/${isolate}
 
 #get sequences that span whole pilS region
