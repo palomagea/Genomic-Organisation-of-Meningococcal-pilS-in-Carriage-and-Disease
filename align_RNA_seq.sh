@@ -1,49 +1,46 @@
+#This pipeline will align the Illumina RNA seq reads to the polished genomes. 
+#To run, this pipeline required paired end RNA seq reads
+
 #!/bin/bash 
-#this pipeline will align RNA seq reads with the ONT reference genomes
 
-#set the path and the name of the RNA seq stranded data 
-path_dir="/NGS/active/IPL/MENINGO/analysis/paloma/RNA_seq"
+######### Set the variables #########
+isolate="the_name_of_the_isolate_or_experiment" Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
+pair_1="the_name_and_path_of_RNA_seq_reads_pair_1" #Path to and name of the RN Aseq reads pair 1
+pair_2="the_name_and_path_of_RNA_seq_reads_pair_2" #Path to and name of the RNA seq reads pair 2
 
-echo Enter isolate name
-read isolate 
+#Set the working directory with the scripts saved in it 
+path_dir=$(pwd)
 
-echo Enter strand one data
-read strand_1
-
-echo Enter strand two data 
-read strand_2
-
-#make folder for rna seq of isolate 
-cd ${path_dir}
-mkdir $isolate
-cd ${isolate}
-
-#copy reference genome to folder and write index file for reference genome
+#Load modules
 module load bwa/0.7.17
-cp /NGS/active/IPL/MENINGO/analysis/paloma/2023/${isolate}/${isolate}_corrected_consensus.fasta ${path_dir}/${isolate}
+module load samtools/1.9
+
+
+#Make folder for RNA seq Data 
+cd ${isolate}
+mkdir RNA_seq
+cd RNA_seq
+cp ${path_dir}/${isolate}/${isolate}_corrected_consensus.fasta ${path_dir}/${isolate}/RNA_seq #copy the genome assembly file into the RNA seq folder and index it
 bwa index -a is ${isolate}_corrected_consensus.fasta
 
-#align fastq files 
-module load samtools/1.9
-bwa mem -t 4 ${isolate}_corrected_consensus.fasta /NGS/active/IPL/MENINGO/analysis/transcriptome/${strand_1} /NGS/active/IPL/MENINGO/analysis/transcriptome/${strand_2} > ${isolate}_RNA_seq_aligned_to_reference.sam 
-samtools view -S -b ${isolate}_RNA_seq_aligned_to_reference.sam > ${isolate}_RNA_seq_aligned_to_reference.bam
+#Align the RNA seq fastq files to the genome assembly using BWA 
+bwa mem -t 4 ${isolate}_corrected_consensus.fasta /NGS/active/IPL/MENINGO/analysis/transcriptome/${pair_1} /NGS/active/IPL/MENINGO/analysis/transcriptome/${pair} > ${isolate}_RNA_seq_aligned_to_reference.sam #both paired ends are aligned to the genome assembly
+samtools view -S -b ${isolate}_RNA_seq_aligned_to_reference.sam > ${isolate}_RNA_seq_aligned_to_reference.bam #sam file is changed to a bam file
+samtools sort ${isolate}_RNA_seq_aligned_to_reference.bam > ${isolate}_RNA_seq_aligned_to_reference.sorted.bam #bam file is sorted 
 
-#sort bam file 
-samtools sort ${isolate}_RNA_seq_aligned_to_reference.bam > ${isolate}_RNA_seq_aligned_to_reference.sorted.bam
-
-#clean bam file
-#remove unmapped reads, include only reads that are properly paired 
+#Filter and clean the alignment file
+#Remove unmapped reads, include only reads that are properly paired 
 # -F 1024 removes PCR or optical duplicates 
-#remove reads with secondary alignments
-#remove aligned reads that have failed instrument QC
-#add unas filter to only take reads where the 150 paired reads are 300-700bp 
+#Remove reads with secondary alignments
+#Remove aligned reads that have failed instrument QC
+#Add paired end filter to only retain reads with an insert size of 300-700bp to reflect the size of the pilE gene
 samtools view -f 3 -F 4 -F 1024 -b -o ${isolate}_RNA_seq_aligned_to_reference.sorted.temp1.bam ${isolate}_RNA_seq_aligned_to_reference.sorted.bam
 samtools view -b -F 0x100  ${isolate}_RNA_seq_aligned_to_reference.sorted.temp1.bam >${isolate}_RNA_seq_aligned_to_reference.sorted.temp2.bam
 samtools rmdup ${isolate}_RNA_seq_aligned_to_reference.sorted.temp2.bam ${isolate}_RNA_seq_aligned_to_reference.temp3.sorted.bam
 samtools view -h ${isolate}_RNA_seq_aligned_to_reference.temp3.sorted.bam | awk 'substr($0,1,1)=="@" || ($9>= 300 && $9<=700) || ($9<=-300 && $9>=-700)' | samtools view -b > ${isolate}_RNA_seq_aligned_to_reference.clean.sorted.bam
-rm ${isolate}_RNA_seq_aligned_to_reference.sorted.temp1.bam ${isolate}_RNA_seq_aligned_to_reference.sorted.temp2.bam ${isolate}_RNA_seq_aligned_to_reference.temp3.sorted.bam
+rm ${isolate}_RNA_seq_aligned_to_reference.sorted.temp1.bam ${isolate}_RNA_seq_aligned_to_reference.sorted.temp2.bam ${isolate}_RNA_seq_aligned_to_reference.temp3.sorted.bam #Remove temporary files
 
-#index bam file 
+#Index the final alignment file 
 samtools index ${isolate}_RNA_seq_aligned_to_reference.clean.sorted.bam
 
 
