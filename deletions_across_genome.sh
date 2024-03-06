@@ -10,7 +10,7 @@
 #!/bin/bash
 
 ####################Variables to set: ######################
-isolate="name_of_the_isolate_or_sample" #This will be the name of the folder that all the output goes into
+isolate="name_of_the_isolate_or_sample" #Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
 WG_fasta="name_and_path_of_the_whole_genome_fasta_file"
 allreads_bam="path_and_name_of_whole_genome_alignment_file" #This is the alignment file of all the nanopore fastq reads aligned to the consensus genome assembly
 window_size="set_the_window_size"
