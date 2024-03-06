@@ -69,8 +69,8 @@ samtools view -F 4 ${isolate}_allreads.bam | cut -f 10 | perl -ne 'chomp;print l
 samtools view -F 4 ${isolate}_allreads.bam | awk '{print length($10)}' | sort -n > listreadlengths.txt #a txt file is generated that has the length of every mapped read on a new line
 
 #Run python scripts that will print the average depth and standard deviation and average length of mapped reads 
-python ${path_dir}/average_depth_std.py
-python ${path_dir}/average_read_length.py
+python ${path_dir}/average_depth_std.py ${path_dir}/${isolate}/${isolate}_coverage.txt
+python ${path_dir}/average_read_length.py ${path_dir}/${isolate}/listreadlengths.txt
 
 #Print the length of the longest read
 echo the longest read length was 
