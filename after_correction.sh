@@ -1,15 +1,10 @@
-#this script is used on the corrected consensus fasta file which is the filtered nanopore reads assembled with flye then corrected with illumina sequence using unicycler 
+#This script is used on the corrected consensus fasta file, which is the Flye assembly that has been corrected using Unicycler with Illumina reads 
+#Running this script assumes that the filtered fastq reads and the corrected consensus assembly for the isolate are saved in the isolate directory and everything else has been moved to a new "not Illumina corrected" sub directory
+#The steps in the seq_analysis directory are repeated with the corrected genome assembly
 
 #!/bin/bash
 
 
-#start in correct folder
-echo Enter pwd for the folder you want to be working in 
-read path_dir
-
-echo Enter isolate name
-read isolate
-echo Analysing sequence run from isolate $isolate 
 
 cd $path_dir/$isolate
 
