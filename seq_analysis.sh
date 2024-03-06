@@ -16,6 +16,10 @@ module load flye/2.8-1
 module load minimap2/2.24
 module load racon/1.4.3
 module load medaka/1.7.1
+module load prokka/1.14.5
+module load samtools/1.9
+module load python/3.7.3
+module load bedtools2/2.19.1
 
 #Make a summary file of the sequencing run
 pycoQC --summary_file seq_summary -o ${run}_qc.html
@@ -42,27 +46,18 @@ cp $path_dir/$isolate/*_flye/medakon_on_racon/consensus.fasta $path_dir/$isolate
 
 #Give some stats about flye assembly like coverage and N50/N90 
 cd $path_dir/$isolate/*_flye 
-grep 'Mean coverage\|Reads N50\|Total read length\|Total length' flye.log > $path_dir/$isolate/genome_assembly_stats.txt #the Flye log is searched for the mean coverage, N50, total read length and total length 
-
+grep 'Mean coverage\|Reads N50\|Total read length\|Total length' flye.log > $path_dir/$isolate/genome_assembly_stats.txt #the Flye log is searched for the mean coverage, N50, total read length and genome length and this is recorded in a txt file
 cd $path_dir/$isolate
 
-#annotate with prokka 
+#Prokka is used to annotate the consensus genome assembly. This is used to identify the fbp and lpxC genes that flank the pilS region.
 mkdir annotation
-cp ${isolate}_consensus.fasta $path_dir/$isolate/annotation
+cp ${isolate}_consensus.fasta $path_dir/$isolate/annotation #the consensus genome is added to the annotation directory to run Prokka in
 cd annotation
-
-module load prokka/1.14.5
 prokka ${isolate}_consensus.fasta --genus neisseria -- prefix $isolate
 
-#make sam bam bai folders index
-#use minimap to map the fastq reads onto the flye assembly just built to make a bam file and index it
-module load samtools/1.9
-module load minimap2/2.24
-module load python/3.7.3
-module load bedtools2/2.19.1
-
+#An alignment file is generated of the filtered fastq reads mapped to the consensus assembly 
 cd $path_dir/$isolate
-minimap2 -ax map-ont $path_dir/$isolate/${isolate}_consensus.fasta $path_dir/$isolate/${isolate}_filt.fastq | samtools view -bS | samtools sort -o ${isolate}_allreads.bam
+minimap2 -ax map-ont $path_dir/$isolate/${isolate}_consensus.fasta $path_dir/$isolate/${isolate}_filt.fastq | samtools view -bS | samtools sort -o ${isolate}_allreads.bam #Minimap was used to map the fastq reads back onto the assembly
 samtools index ${isolate}_allreads.bam 
 
 #depth of coverage all bps txt file ref seq, base index, coverage as headers 
