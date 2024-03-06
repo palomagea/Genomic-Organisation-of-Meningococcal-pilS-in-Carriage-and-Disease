@@ -9,6 +9,9 @@ isolate="the_name_of_the_isolate_or_experiment" #Multiple isolates were sequence
 seq_run_path="the_name_and_path_where_the_fastq_runs_are_saved" #This is the path to folder of fastq files with the barcode corresponding to this isolate
 seq_summary="the_name_and_path_of_the_sequencing_summary_file_for_this_run" #The path to the sequencing summary file for this run and the name of the summary file
 
+#Set the working directory with the scripts saved in it 
+path_dir=$(pwd)
+
 #Load modules 
 module load pycoqc/2.5.0.3
 module load nanopack/1.1.1
