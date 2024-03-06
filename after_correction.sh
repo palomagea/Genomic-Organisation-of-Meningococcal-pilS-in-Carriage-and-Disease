@@ -4,11 +4,20 @@
 
 #!/bin/bash
 
+######### Set the variables #########
+isolate="the_name_of_the_isolate_or_experiment" #Multiple isolates were sequenced in the same run with different barcodes. This attaches the isolate name to the sequences for that barcode
+
+#Set the working directory with the scripts saved in it 
+path_dir=$(pwd)
+
+
+#Load modules 
+module load prokka/1.14.5
 
 
 cd $path_dir/$isolate
 
-#prokka annotation
+#Prokka is used to annotate the consensus genome assembly. This is used to identify the fbp and lpxC genes that flank the pilS region.
 mkdir annotation
 cp ${isolate}_corrected_consensus.fasta $path_dir/$isolate/annotation
 cd annotation
