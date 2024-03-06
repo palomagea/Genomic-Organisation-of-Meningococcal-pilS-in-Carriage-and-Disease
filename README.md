@@ -14,14 +14,14 @@ seq_run_path="the_name_and_path_where_the_fastq_runs_are_saved" #This is the pat
 seq_summary="the_name_and_path_of_the_sequencing_summary_file_for_this_run" #The path to the sequencing summary file for this run and the name of the summary file
 
 This pipeline will
-- Generate a pycoQC sequencing summary report
-- Filter the fastq reads and remove any reads below q score 12 and less than 5kb in length
-- Assemble the reads into a genome using Flye
-- Polish the genome using Racon and Medaka
-- Create an alignment of fastq reads mapped onto the assembly genome
-- Print the average depth across the genome and the standard deviation
-- Print the average length of mapped reads
-- Print the length of the longest mapped read
+\- Generate a pycoQC sequencing summary report
+\- Filter the fastq reads and remove any reads below q score 12 and less than 5kb in length
+\- Assemble the reads into a genome using Flye
+\- Polish the genome using Racon and Medaka
+\- Create an alignment of fastq reads mapped onto the assembly genome
+\- Print the average depth across the genome and the standard deviation
+\- Print the average length of mapped reads
+\- Print the length of the longest mapped read
 
 Despite having to repeat many of these steps after correcting with Illumina, this pipeline has been left to show how the genomes were polished with Medaka and Racon and what the flye assemblies looked like before and after Illumina correction. 
 
