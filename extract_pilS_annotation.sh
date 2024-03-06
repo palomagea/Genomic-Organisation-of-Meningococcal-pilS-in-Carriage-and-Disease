@@ -47,5 +47,5 @@ bakta --output ${isolate}_pilS --genus Neisseria ${path_dir}/${isolate}/${isolat
 blastn -db /NGS/active/IPL/MENINGO/analysis/paloma/pilS_nt_db/pilS_nt_db -query ${isolate}_pilS.fasta -outfmt "6 sseqid qstart qend sseq" -out ${isolate}_pilS_nt_full_blast_sequences -max_target_seqs 6000 #Outfmt includes the sequence ID and the sequence of the alleles that matched to pilS
 
 #Run python script to extract just the allele sequences that matched to pilS from the BLAST result
-python ${path_dir}/extract_full_blast_seq.py 
+python ${path_dir}/extract_full_blast_seq.py #the sequence of the aligning alleles is saved to a fasta file that gets uploaded to geneious prime to annotate the genome
 
