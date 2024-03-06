@@ -15,6 +15,8 @@ path_dir=$(pwd)
 module load python/3.7.3
 module load bedtools/2.31.0
 module load samtools/1.9
+module load bakta/1.5.0
+module load ncbi-blast/2.6.0
 
 #make query.bed for the pilS region from input 
 python make_query.py
@@ -42,7 +44,6 @@ bedtools getfasta -fi $path_dir/$isolate/${isolate}_corrected_consensus.fasta -b
 cd ${path_dir}/${isolate}
 mkdir bakta
 cd bakta
-module load bakta/1.5.0
 bakta --output ${isolate}_pilS --genus Neisseria ${path_dir}/${isolate}/${isolate}_pilS.fasta 
 
 #full blast to get all sequences that align  
