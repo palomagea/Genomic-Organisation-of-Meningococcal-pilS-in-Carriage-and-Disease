@@ -32,13 +32,13 @@ awk '/^>/{if (l!="") print l; print; l=0; next}{l+=length($0)}END{print l}' $pat
 python ${path_dir}/create_genome.py ${path_dir}/${isolate}/genome_length.txt #Run python script to make a genome file from the txt file with the genome length
 
 #Extract only the reads that map the whole way across the pilS region
-bedtools intersect -a ${isolate}_allreads.bed -b query.bed -F 1 > ${isolate}_pilS.bed #the query bed file contains the pilS region and the intersect function extracts reads from the allreads.bed file that overlap the whole pilS region
+bedtools intersect -a ${isolate}_allreads.bed -b ${path_dir}/${isolate}/query.bed -F 1 > ${isolate}_pilS.bed #the query bed file contains the pilS region and the intersect function extracts reads from the allreads.bed file that overlap the whole pilS region
 
 #Run python script that counts reads mapping pilS from the pilS.bed file 
 python ${path_dir}/count_pilS_reads.py ${path_dir}/${isolate}/${isolate}_pilS.bed #this script prints the number of reads mapping across the entire pilS 
 
 #Extract the pilS sequence from the whole genome fasta
-bedtools getfasta -fi $path_dir/$isolate/${isolate}_corrected_consensus.fasta -bed query.bed -fo ${isolate}_pilS.fasta #The query bed file containing the pilS region is used to extract the pilS fasta from the whole genome fasta
+bedtools getfasta -fi $path_dir/$isolate/${isolate}_corrected_consensus.fasta -bed ${path_dir}/${isolate}/query.bed -fo ${isolate}_pilS.fasta #The query bed file containing the pilS region is used to extract the pilS fasta from the whole genome fasta
 
 #Use Bakta to annotate the pilS region
 mkdir bakta #make a directory for the Bakta annotation 
