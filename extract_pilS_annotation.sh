@@ -10,9 +10,11 @@ isolate="the_name_of_the_isolate_or_experiment" #Use the same isolate name as in
 pilS_start="the_genomic_start_positon_of_pilS" #The positon in bp of the start of pilS (including fbp and lpxC +1kb on either end as a buffer)
 pilS_end="the_genomic_end_position_of_pilS" #The positon in bp of the end of pilS (including fbp and lpxC +1kb on either end as a buffer)
 pilS_contig="the_contig_that_pilS_is_on" #Very few of the isolates had more than one contig. If there was only one contig set "contig_1". In isolates with more than one contig set the contig pilS was on. 
+
 #Set the working directory with the scripts saved in it 
 path_dir=$(pwd)
-db_name="pilS_nt_database
+db_name="pilS_nt_db" #This only needs editing if using a different database
+blast_db="${path_dir}/${db_name} #This only needs editing if using a different database
 
 #Load Modules 
 module load python/3.7.3
