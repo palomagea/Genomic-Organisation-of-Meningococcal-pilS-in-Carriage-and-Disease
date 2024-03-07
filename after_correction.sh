@@ -16,7 +16,7 @@ module load prokka/1.14.5
 module load samtools/1.9
 module load minimap2/2.24
 module load python/3.7.3
-module load bedtools2/2.19.1
+module load bedtools/2.19.1
 
 cd $path_dir/$isolate
 
