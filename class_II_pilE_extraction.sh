@@ -14,7 +14,7 @@ pilE_contig="the_contig_that_pilS_is_on" #Very few of the isolates had more than
 #Start in correct folder
 path_dir=$(pwd)
 db_name="pilS_nt_db" #This only needs editing if using a different database
-blast_db="${path_dir}/${db_name} #This only needs editing if using a different database
+blast_db="${path_dir}/${db_name}" #This only needs editing if using a different database
 
 #Load modules
 module load python/3.7.3
