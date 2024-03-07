@@ -79,7 +79,6 @@ Set the following variables within the pipeline before use
 - pilS_start="the_genomic_start_positon_of_pilS" The positon in bp of the start of pilS (including fbp and lpxC +1kb on either end as a buffer)
 - pilS_end="the_genomic_end_position_of_pilS" The positon in bp of the end of pilS (including fbp and lpxC +1kb on either end as a buffer)
 - pilS_contig="the_contig_that_pilS_is_on" Very few of the isolates had more than one contig. If there was only one contig set "contig_1". In isolates with more than one contig set the contig pilS was on.
-- blast_db="path_and_name_of_blast_database" The PubMLST alleles for fbp, lpxC, pilS and pilE downloaded and made into a database. 
 
 This pipeline will 
 - Extract all of the reads that map the whole way across pilS and count them
