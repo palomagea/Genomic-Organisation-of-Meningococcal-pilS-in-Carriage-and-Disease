@@ -29,7 +29,7 @@ python ${path_dir}/make_query.py ${isolate} ${pilS_start} ${pilS_end} ${pilS_con
 
 #Make a genome file that contains the length of the genome
 awk '/^>/{if (l!="") print l; print; l=0; next}{l+=length($0)}END{print l}' $path_dir/$isolate/${isolate}_corrected_consensus.fasta > $path_dir/$isolate/genome_length.txt #Get the length of genome and save to a txt file
-python ${path_dir}/create_genome.py ${path_dir}/${isolate}/genome_length.txt #Run python script to make a genome file from the txt file with the genome length
+python ${path_dir}/create_genome.py ${path_dir}/${isolate}/genome_length.txt ${path_dir}/${isolate}/${isolate}.genome #Run python script to make a genome file from the txt file with the genome length
 
 #Extract only the reads that map the whole way across the pilS region
 bedtools intersect -a ${isolate}_allreads.bed -b ${path_dir}/${isolate}/query.bed -F 1 > ${isolate}_pilS.bed #the query bed file contains the pilS region and the intersect function extracts reads from the allreads.bed file that overlap the whole pilS region
