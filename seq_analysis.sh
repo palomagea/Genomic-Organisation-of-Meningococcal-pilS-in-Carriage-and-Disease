@@ -22,7 +22,7 @@ module load medaka/1.7.1
 module load prokka/1.14.5
 module load samtools/1.9
 module load python/3.7.3
-module load bedtools2/2.19.1
+module load bedtools/2.19.1
 
 #Make a summary file of the sequencing run
 pycoQC --summary_file seq_summary -o ${run}_qc.html
