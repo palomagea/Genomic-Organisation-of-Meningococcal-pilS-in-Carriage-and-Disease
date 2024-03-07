@@ -10,6 +10,7 @@ isolate="the_name_of_the_isolate_or_experiment" #Use the same isolate name as in
 pilS_start="the_genomic_start_positon_of_pilS" #The positon in bp of the start of pilS (including fbp and lpxC +1kb on either end as a buffer)
 pilS_end="the_genomic_end_position_of_pilS" #The positon in bp of the end of pilS (including fbp and lpxC +1kb on either end as a buffer)
 pilS_contig="the_contig_that_pilS_is_on" #Very few of the isolates had more than one contig. If there was only one contig set "contig_1". In isolates with more than one contig set the contig pilS was on. 
+blast_db="path_and_name_of_blast_database" #The PubMLST alleles for fbp, lpxC, pilS and pilE downloaded and made into a database 
 
 #Set the working directory with the scripts saved in it 
 path_dir=$(pwd)
@@ -44,7 +45,7 @@ cd bakta
 bakta --output ${isolate}_pilS --genus Neisseria ${path_dir}/${isolate}/${isolate}_pilS.fasta #Set the genus as Neisseria
 
 #Use BLAST to look for alleles in the database with sequence similarity to the pilS region 
-blastn -db /NGS/active/IPL/MENINGO/analysis/paloma/pilS_nt_db/pilS_nt_db -query ${isolate}_pilS.fasta -outfmt "6 sseqid qstart qend sseq" -out ${isolate}_pilS_nt_full_blast_sequences -max_target_seqs 6000 #Outfmt includes the sequence ID and the sequence of the alleles that matched to pilS
+blastn -db blast_db -query ${isolate}_pilS.fasta -outfmt "6 sseqid qstart qend sseq" -out ${isolate}_pilS_nt_full_blast_sequences -max_target_seqs 6000 #Outfmt includes the sequence ID and the sequence of the alleles that matched to pilS
 
 #Run python script to extract just the allele sequences that matched to pilS from the BLAST result
 python ${path_dir}/extract_full_blast_seq.py ${path_dir}/${isolate}/${isolate}_pilS_nt_full_blast_sequences ${path_dir}/${isolate}/${isolate}_pilS_nt_full_blast_seq.fasta #the sequence of the aligning alleles is saved to a fasta file that gets uploaded to geneious prime to annotate the genome
