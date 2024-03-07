@@ -23,9 +23,9 @@ for lines in rfile:
         count += 1 #for each line the count increases by 1 so the total number of positions is recorded
         coveragelist.append(int(field3)) #the depth at each positon is added to a list called coverage list
 result = total /count  #the mean depth is calculated by dividing the total of all depths by the number of genomic positions
-print (str('isolate '), isolate, str('the average depth is '), result) #the mean depth is printed
+print (str('the average depth is '), result) #the mean depth is printed
 
 import statistics 
 std = statistics.stdev(coveragelist)  #the standard deviation is calculated from the coverage list that contains all the depths 
-print (str('isolate '), isolate, str('the standard deviation of coverage is '), std) #the standard deviation is printed 
+print (str('the standard deviation of coverage is '), std) #the standard deviation is printed 
 openfile.close() 
