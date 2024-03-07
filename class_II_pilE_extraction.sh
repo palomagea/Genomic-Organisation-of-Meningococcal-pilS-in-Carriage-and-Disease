@@ -16,7 +16,7 @@ path_dir=$(pwd)
 
 #Load modules
 module load python/3.7.3
-module load bedtools2/2.19.1
+module load bedtools/2.19.1
 module load samtools/1.9
 module load bakta/1.5.0
 module load ncbi-blast/2.12.0
