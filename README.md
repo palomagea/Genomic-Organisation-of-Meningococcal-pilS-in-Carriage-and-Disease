@@ -70,6 +70,7 @@ makeblastdb -in [pilS_nt_db.fas] -dbtype nucl -input_type fasta -out [pilS_nt_db
 ```
 
 The pilS nucleotide database generated was saved and is used in the extract_pilS_annotation.sh pipeline below
+The database used in this thesis has been uploaded into the repository. 
 
 #### 6. Run the extract_pilS_annotation.sh pipeline
 For this pipeline to run need to know the boundaries of the pilS region and have created the BLAST database from the PubMLST alleles and saved it as pilS_nt_db
@@ -78,6 +79,7 @@ Set the following variables within the pipeline before use
 - pilS_start="the_genomic_start_positon_of_pilS" The positon in bp of the start of pilS (including fbp and lpxC +1kb on either end as a buffer)
 - pilS_end="the_genomic_end_position_of_pilS" The positon in bp of the end of pilS (including fbp and lpxC +1kb on either end as a buffer)
 - pilS_contig="the_contig_that_pilS_is_on" Very few of the isolates had more than one contig. If there was only one contig set "contig_1". In isolates with more than one contig set the contig pilS was on.
+- blast_db="path_and_name_of_blast_database" The PubMLST alleles for fbp, lpxC, pilS and pilE downloaded and made into a database. 
 
 This pipeline will 
 - Extract all of the reads that map the whole way across pilS and count them
