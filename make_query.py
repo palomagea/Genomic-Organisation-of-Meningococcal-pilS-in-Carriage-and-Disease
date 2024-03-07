@@ -12,10 +12,10 @@ query_bed = sys.argv[5]
 
 original_stdout = sys.stdout
 
-query_str = pilS_contig +"\t" + start_pilS + "\t" + end_pilS
+query_str = pilS_contig +"\t" + pilS_start + "\t" + pilS_end
 fixed_query_str = query_str.strip()
 
-with open(str1, 'w') as f:
+with open(query.bed, 'w') as f:
         sys.stdout = f
         print (fixed_query_str)
         sys.stdout = original_stdout
