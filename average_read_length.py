@@ -19,4 +19,4 @@ for lengths in rfile:
         total += int(lengths) #the length is read as an interger and added to the total
         count += 1 #for each line in the file the count increases by one 
 average = total/count #the average is calculated by the total length of all reads divided by the number of reads 
-print (str('the average mapped read length for'), isolate, str(' is  '), average) #the average read length is printed 
+print (str('the average mapped read length is'), average) #the average read length is printed 
