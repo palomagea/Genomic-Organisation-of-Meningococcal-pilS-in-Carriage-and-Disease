@@ -15,7 +15,7 @@ step_size = sys.argv[5]
 #A whole genome query bed file is made that has a list of windows, each window has the contig name and start and end position of the window
 #The windows span across the entire genome 
 with open (query_bed, 'w') as bed_file:
-    for record in SeqIO.parse(open(whole_genome_fasta, 'fasta'): #The whole genome fasta file is opened and the contig name and length of each contig is recorded 
+    for record in SeqIO.parse(open(whole_genome_fasta, 'fasta')): #The whole genome fasta file is opened and the contig name and length of each contig is recorded 
         seq_name = record.id
         seq_length = len(record)
         
