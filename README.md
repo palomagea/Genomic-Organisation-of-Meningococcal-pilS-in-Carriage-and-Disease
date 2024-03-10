@@ -59,7 +59,7 @@ This pipeline will
 As outlined in the thesis, the pilS region is flanked by fbp and lpxC genes. The prokka annotation file was used to identify the genomic location of these genes.
 The region between and including fbp and lpxC, with an additional 1kb buffer on each side was defined as the pilS region. This was recorded to enter into the next pipeline.
 
-#### 5. Create BLAST database
+#### 5. BLAST database
 All alleles for fbp, lpxC, pilE and pilS were downloaded from pubMLST and joined into one fasta file called pilS_nt_db.fas with a unique identifier for each allele
 These alleles were used to make a BLAST database
 The following steps were carried out to make the database
@@ -70,7 +70,7 @@ makeblastdb -in [pilS_nt_db.fas] -dbtype nucl -input_type fasta -out [pilS_nt_db
 ```
 
 The pilS nucleotide database generated was saved and is used in the extract_pilS_annotation.sh pipeline below
-The database used in this thesis has been uploaded into the repository. 
+The database used in this thesis has been uploaded into the repository.
 
 #### 6. Run the extract_pilS_annotation.sh pipeline
 For this pipeline to run need to know the boundaries of the pilS region and have created the BLAST database from the PubMLST alleles and saved it as pilS_nt_db
