@@ -25,7 +25,7 @@ module load python/3.7.3
 module load bedtools/2.19.1
 
 #Make a summary file of the sequencing run
-pycoQC --summary_file seq_summary -o ${run}_qc.html
+pycoQC --summary_file ${seq_summary} -o ${run}_qc.html
 
 #Make a directory for the isolate 
 mkdir ${isolate} 
