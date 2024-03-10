@@ -47,7 +47,7 @@ bakta --output ${isolate}_pilS --genus Neisseria ${path_dir}/${isolate}/${isolat
 
 #Use BLAST to look for alleles in the database with sequence similarity to the pilS region 
 cd ${path_dir}/${isolate}
-blastn -db blast_db -query ${isolate}_pilS.fasta -outfmt "6 sseqid qstart qend sseq" -out ${isolate}_pilS_nt_full_blast_sequences -max_target_seqs 6000 #Outfmt includes the sequence ID and the sequence of the alleles that matched to pilS
+blastn -db ${blast_db} -query ${isolate}_pilS.fasta -outfmt "6 sseqid qstart qend sseq" -out ${isolate}_pilS_nt_full_blast_sequences -max_target_seqs 6000 #Outfmt includes the sequence ID and the sequence of the alleles that matched to pilS
 
 #Run python script to extract just the allele sequences that matched to pilS from the BLAST result
 python ${path_dir}/extract_full_blast_seq.py ${path_dir}/${isolate}/${isolate}_pilS_nt_full_blast_sequences ${path_dir}/${isolate}/${isolate}_pilS_nt_full_blast_seq.fasta #the sequence of the aligning alleles is saved to a fasta file that gets uploaded to geneious prime to annotate the genome
