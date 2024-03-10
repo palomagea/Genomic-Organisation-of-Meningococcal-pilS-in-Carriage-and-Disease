@@ -54,7 +54,7 @@ while IFS=$'\t' read -r chrom start end; do
     bedtools intersect -a "${path_dir}/${isolate}/${isolate}_allreads.bed" -b "$query_bed" -F 1 > "${window_name_clean}.bed" #Search the WG alignment file for the reads that map only across the specified window 
 
     if [ -s "${window_name_clean}.bed" ]; then #This if statement makes sure there is content in the bed file of reads mapping across the window by checking if the file size is greater than 0 
-        python ${path_dir}/extract_seq_names_from_bed.py ${window_name_clean}.bed ${window_name_clean}_read_names.txt #This python script extracts the sequence names from the whole genome alignment file that map across the specified window and adds them to a new file
+        python ${path_dir}/extract_sequence_name_from_bed.py ${window_name_clean}.bed ${window_name_clean}_read_names.txt #This python script extracts the sequence names from the whole genome alignment file that map across the specified window and adds them to a new file
         samtools view -H "$allreads_bam" > "header_${window_name_clean}.sam" #This takes the header from the whole genome alignment file and saves it so it can be added to the window sam file later
         samtools view "$allreads_bam" | grep -f "${window_name_clean}_read_names.txt" > "$window_sam" #The reads in the whole genome alignment file with sequence names that map across the specified window are added to the window sam file
         cat "header_${window_name_clean}.sam" "$window_sam" > "${window_name_clean}_with_header.sam" #The header is added to the sam file for the specified window so the format is correct 
