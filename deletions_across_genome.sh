@@ -30,7 +30,7 @@ mkdir deletions
 cd deletions
 
 #Use python script to create a WG_sliding windows query.bed file of the windows that will span across the whole genome, this can be edited to change window step and size
-${path_dir}/python make_sliding_windows.py ${isolate} /${path_dir}/${isolate}/${isolate}_corrected_consensus.fasta ${path_dir}/${isolate}/deletions/${isolate}_WG_windows_query.bed ${window_size} ${window_step}
+python ${path_dir}/make_sliding_windows.py ${isolate} /${path_dir}/${isolate}/${isolate}_corrected_consensus.fasta ${path_dir}/${isolate}/deletions/${isolate}_WG_windows_query.bed ${window_size} ${window_step}
 
 #Use the WG_sliding windows query file and iterate through each window defined in the query file 
 #For each window pull out all of the reads that map completely across that window and make separate bam alignment files for each window with the reads mapping fully across
