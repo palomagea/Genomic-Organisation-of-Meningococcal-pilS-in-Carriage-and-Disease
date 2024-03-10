@@ -30,7 +30,7 @@ prokka ${isolate}_corrected_consensus.fasta --genus neisseria -- prefix $isolate
 cd $path_dir/$isolate
 minimap2 -ax map-ont $path_dir/$isolate/${isolate}_corrected_consensus.fasta $path_dir/$isolate/${isolate}_filt.fastq | samtools view -bS | samtools sort -o ${isolate}_allreads.bam #Minimap was used to map the fastq reads back onto the assembly
 samtools index ${isolate}_allreads.bam 
-samtools bamtobed -i ${path_dir}/${isolate}/${isolate}_allreads.bam > ${path_dir}/${isolate}/${isolate}_allreads.bed
+bedtools bamtobed -i ${path_dir}/${isolate}/${isolate}_allreads.bam > ${path_dir}/${isolate}/${isolate}_allreads.bed
 
 #Generate a txt file from the alignment file that contains the depth at each genomic position. 
 #The txt file has three columns: contig name, position and depth at that positon
