@@ -9,15 +9,15 @@
 
 #!/bin/bash
 
+#Set the working directory with the scripts saved in it 
+path_dir=$(pwd)
+
 ####################Variables to set: ######################
 isolate="name_of_the_isolate_or_sample" #Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
-WG_fasta="name_and_path_of_the_whole_genome_fasta_file" #The genome assembly for the specified isolate
-allreads_bam="path_and_name_of_whole_genome_alignment_file" #This is the alignment file of all the nanopore fastq reads aligned to the consensus genome assembly
+allreads_bam="${path_dir}/${isolate}/${isolate}_allreads.bam #This is the alignment file of all the nanopore fastq reads aligned to the consensus genome assembly
 window_size="set_the_window_size" #The size of the window. In this thesis I used 10000 however this can be changed
 window_step="set_the_window_step" #The step between windows. In this thesis I used 500 however this can be changed
 
-#Set the working directory with the scripts saved in it 
-path_dir=$(pwd)
 
 #Load modules
 module load python/3.7.3
@@ -30,7 +30,7 @@ mkdir deletions
 cd deletions
 
 #Use python script to create a WG_sliding windows query.bed file of the windows that will span across the whole genome, this can be edited to change window step and size
-${path_dir}/python make_sliding_windows.py ${isolate} ${WG_fasta} ${path_dir}/${isolate}/deletions/${isolate}_WG_windows_query.bed ${window_size} ${window_step}
+${path_dir}/python make_sliding_windows.py ${isolate} /${path_dir}/${isolate}/${isolate}_corrected_consensus.fasta ${path_dir}/${isolate}/deletions/${isolate}_WG_windows_query.bed ${window_size} ${window_step}
 
 #Use the WG_sliding windows query file and iterate through each window defined in the query file 
 #For each window pull out all of the reads that map completely across that window and make separate bam alignment files for each window with the reads mapping fully across
