@@ -15,7 +15,7 @@ original_stdout = sys.stdout
 query_str = pilS_contig +"\t" + pilS_start + "\t" + pilS_end
 fixed_query_str = query_str.strip()
 
-with open(query.bed, 'w') as f:
+with open(query_bed, 'w') as f:
         sys.stdout = f
         print (fixed_query_str)
         sys.stdout = original_stdout
