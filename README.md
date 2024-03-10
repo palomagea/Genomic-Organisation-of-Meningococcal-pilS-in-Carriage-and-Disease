@@ -88,6 +88,7 @@ This pipeline will
 - Save all of the matched alleles into a fasta file
 
 #### 7. Run the class_II_pilE_extraction.sh pipeline
+This pipeline only needs to be run for isolates with a class II pilE (NZ97/052, NZCM111 and NZCM112)
 For this pipeline to run need to know the genomic location of the pilE gene in the class II isolates, located using the prokka annotation and then include a buffer of +1kb on either side
 Set the following variables within the pipeline before use
 - isolate="the_name_of_the_isolate_or_experiment" Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
