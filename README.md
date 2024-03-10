@@ -108,6 +108,7 @@ The pilS regions of all isolates and the pilE region of the class II isolates we
 All of the files needed for this annotation were generated in the pipelines above
 
 #### 9. Run the align_RNA_seq.sh pipeline
+This pipeline only needs to be run for the isolates with RNA seq data
 Set the following variables within the pipeline before use
 - isolate="the_name_of_the_isolate_or_experiment" Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
 - pair_1="the_name_and_path_of_RNA_seq_reads_pair_1" 
