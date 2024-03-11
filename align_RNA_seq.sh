@@ -24,7 +24,7 @@ cp ${path_dir}/${isolate}/${isolate}_corrected_consensus.fasta ${path_dir}/${iso
 bwa index -a is ${isolate}_corrected_consensus.fasta
 
 #Align the RNA seq fastq files to the genome assembly using BWA 
-bwa mem -t 4 ${isolate}_corrected_consensus.fasta /NGS/active/IPL/MENINGO/analysis/transcriptome/${pair_1} /NGS/active/IPL/MENINGO/analysis/transcriptome/${pair} > ${isolate}_RNA_seq_aligned_to_reference.sam #both paired ends are aligned to the genome assembly
+bwa mem -t 4 ${isolate}_corrected_consensus.fasta ${pair_1} ${pair} > ${isolate}_RNA_seq_aligned_to_reference.sam #both paired ends are aligned to the genome assembly
 samtools view -S -b ${isolate}_RNA_seq_aligned_to_reference.sam > ${isolate}_RNA_seq_aligned_to_reference.bam #sam file is changed to a bam file
 samtools sort ${isolate}_RNA_seq_aligned_to_reference.bam > ${isolate}_RNA_seq_aligned_to_reference.sorted.bam #bam file is sorted 
 
