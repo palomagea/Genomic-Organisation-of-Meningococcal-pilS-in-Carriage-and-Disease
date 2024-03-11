@@ -25,7 +25,7 @@ module load ncbi-blast/2.12.0
 
 #Run python script to make a query bed file that contains the contig name and start and end positions of pilE
 cd ${isolate}
-python make_pilE_query.py ${isolate} ${pilE_start} ${pilE_end} ${pilE_contig} ${path_dir}/${isolate}/pilE_query.bed
+python ${path_dir}/make_pilE_query.py ${isolate} ${pilE_start} ${pilE_end} ${pilE_contig} ${path_dir}/${isolate}/pilE_query.bed
 
 #Extract the pilE sequence from the whole genome fasta
 bedtools getfasta -fi $path_dir/$isolate/${isolate}_corrected_consensus.fasta -bed pilE_query.bed -fo ${isolate}_class_II_pilE.fasta 
