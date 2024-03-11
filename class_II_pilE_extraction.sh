@@ -36,7 +36,7 @@ bakta --output ${isolate}_class_II_pilE --genus Neisseria ${path_dir}/${isolate}
 cd ${path_dir}/${isolate}
 
 #Use BLAST to look for alleles in the database with sequence similarity to the pilS region 
-blastn -db blast_db -query ${isolate}_class_II_pilE.fasta -outfmt "6 sseqid qstart qend sseq" -out ${isolate}_class_II_pilE_nt_full_blast_sequences -max_target_seqs 6000
+blastn -db ${blast_db} -query ${isolate}_class_II_pilE.fasta -outfmt "6 sseqid qstart qend sseq" -out ${isolate}_class_II_pilE_nt_full_blast_sequences -max_target_seqs 6000
 
 #Run python script to extract just the allele sequences that matched to pilE from the BLAST result
 python ${path_dir}/extract_pilE_full_blast_seq.py ${path_dir}/${isolate}/${isolate}_class_II_pilE_nt_full_blast_sequences ${path_dir}/${isolate}/${isolate}_class_II_pilE_nt_full_blast_seq.fasta
