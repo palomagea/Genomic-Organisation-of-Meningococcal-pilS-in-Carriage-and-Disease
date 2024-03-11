@@ -1,22 +1,21 @@
+#This script works with the class_II_pilE_extraction.sh pipeline to create a query file for the pilE region of isolates with a class II pilE
+#The query file contains the contig pilE is on and the start and end positions of pilE (pilS includes both katA and prlC +1kb on either side as a buffer)
 
-isolate = input("input isolate name ")
+import sys 
 
-start_pilS = input(str("input the start of pilE "))
-end_pilS = input(str("input the end of pilE "))
-
-import sys
-
-print ("contig_1\t", start_pilS,"\t", end_pilS)
+#These variables are set in the extract_pilS_annotation.sh pipeline
+isolate = sys.argv[1]
+pilE_start = sys.argv[2]
+pilE_end = sys.argv[3] 
+pilE_contig = sys.argv[4]
+query_bed = sys.argv[5]
 
 original_stdout = sys.stdout
 
-path = str("/NGS/active/IPL/MENINGO/analysis/paloma/2023/")
-
-str1 = path+isolate+ "/pilE_query.bed"
-query_str = "contig_1\t" + start_pilS + "\t" + end_pilS
+query_str = pilE_contig +"\t" + pilE_start + "\t" + pilE_end
 fixed_query_str = query_str.strip()
 
-with open(str1, 'w') as f:
+with open(query_bed, 'w') as f:
         sys.stdout = f
         print (fixed_query_str)
         sys.stdout = original_stdout
