@@ -15,8 +15,8 @@ path_dir=$(pwd)
 ####################Variables to set: ######################
 isolate="name_of_the_isolate_or_sample" #Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
 allreads_bam="${path_dir}/${isolate}/${isolate}_allreads.bam" #This is the alignment file of all the nanopore fastq reads aligned to the consensus genome assembly
-window_size="set_the_window_size" #The size of the window. In this thesis I used 10000 however this can be changed
-window_step="set_the_window_step" #The step between windows. In this thesis I used 500 however this can be changed
+window_size="10000" #The size of the window. In this thesis I used 10000 however this can be changed
+window_step="500" #The step between windows. In this thesis I used 500 however this can be changed
 
 
 #Load modules
