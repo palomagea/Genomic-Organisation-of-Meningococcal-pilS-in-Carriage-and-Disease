@@ -4,7 +4,7 @@
 #!/bin/bash 
 
 ######### Set the variables #########
-isolate="the_name_of_the_isolate_or_experiment" Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
+isolate="the_name_of_the_isolate_or_experiment" #Use the same isolate name as in the seq_analysis.sh pipeline so that all of the files are named consistently
 pair_1="the_name_and_path_of_RNA_seq_reads_pair_1" #Path to and name of the RN Aseq reads pair 1
 pair_2="the_name_and_path_of_RNA_seq_reads_pair_2" #Path to and name of the RNA seq reads pair 2
 
