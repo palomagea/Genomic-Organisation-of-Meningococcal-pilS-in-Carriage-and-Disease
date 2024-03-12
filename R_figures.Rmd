@@ -17,7 +17,7 @@ This file was generated manually based on the consensus annotations and has been
 library(ggplot2) 
 
 ###Set the variables###
-pilS_comparison_csv <- "/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/pilS_comparison.csv #csv file path only needs to be changed if moved
+pilS_comparison_csv <- "/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/pilS_comparisons.csv" #set the path to the csv file
 
 pilS_comparison = read.table(pilS_comparison_csv, header=T, sep = ",") 
 pilS_comparison$Length.of.PilS.Region.including.fbp.and.lpxC..bp.. <- 
@@ -58,7 +58,7 @@ This file was generated manually based on the consensus annotations and has been
 library(ggplot2) 
 
 ###Set the variables###
-pilS_comparison_csv <- "/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/pilS_comparison.csv #csv file path only needs to be changed if moved
+pilS_comparison_csv <- "/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/pilS_comparisons.csv" #csv file path only needs to be changed if moved
 
 pilS_comparison = read.table(pilS_comparison_csv, header=T, sep = ",") 
 pilS_comparison$Number.of.other.truncated.copies. <- 
