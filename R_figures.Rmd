@@ -9,7 +9,9 @@ output: html_document
 Graph a scatter plot of the length of the pilS region and number of pilS cassettes from a csv file\
 Set disease assoicated isolates as oranges Xs and carriage associated isolates as blue Os\
 
-Use the csv file "pilS_comparisons.csv containing the length of the pilS region (inlcuding fbp and lpxC without the 1kb buffer) and number of silent cassettes from the consensus annotation 
+Use the csv file "pilS_comparisons.csv containing the length of the pilS region (inlcuding fbp and lpxC without the 1kb buffer) and number of silent cassettes  \
+This file was generated manually based on the consensus annotations and has been included in the repository
+
 
 ```{r, out.width="50%", fig.width=10, fig.height=5, dpi=300, echo = FALSE}
 library(ggplot2) 
@@ -45,13 +47,20 @@ plot(pilS_plot)
 ```
 
 
-Make scatter plot to show number of silent pilS copies per isolate, organised into families
+Make scatter plot to show number of silent pilS copies per isolate, organised into families\
+Set disease assoicated isolates as oranges Xs and carriage associated isolates as blue Os\
+
+Use the csv file "pilS_comparisons.csv containing the length of the pilS region (inlcuding fbp and lpxC without the 1kb buffer) and number of silent cassettes  \
+This file was generated manually based on the consensus annotations and has been included in the repository
+
 
 ```{r, out.width="50%", fig.width=10, fig.height=5, dpi=300, echo = FALSE}
 library(ggplot2) 
 
+###Set the variables###
+pilS_comparison_csv <- "/home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/pilS_comparison.csv #csv file path only needs to be changed if moved
 
-pilS_comparison = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/pilS_comparisons.csv", header=T, sep = ",") 
+pilS_comparison = read.table(pilS_comparison_csv, header=T, sep = ",") 
 pilS_comparison$Number.of.other.truncated.copies. <- 
   +    as.numeric(gsub("[^0-9.]", "", pilS_comparison$Number.of.other.truncated.copies.)) 
 pilS_comparison$Isolate.. <- factor(pilS_comparison$Isolate.., levels = unique(pilS_comparison$Isolate)) 
@@ -67,12 +76,21 @@ pilS_plot2 <- ggplot(pilS_comparison, aes(x = Isolate.., y = Number.of.other.tru
 plot(pilS_plot2)
 ```
 
-Make Bar Graph to show number of reads mapping pilS 
+Make Bar Graph to show number of reads mapping pilS for each isolate \
+Disease associated isolates are blue and carriage associated isolates are orange\
+
+Use the csv file "assembly_stats.csv" contaning the average depth across the genome and the reads mapping pilS for each isolate \
+This file was generated manually from the output of the after_correction.sh script and has been included in the repository
+
+
 ```{r, out.width="50%", fig.width=10, fig.height=5, dpi=300, echo = FALSE}
 library(ggplot2)
 library(dplyr)
 
-assembly_stats = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/assembly_stats.csv", header=T, sep = ",") 
+###Set the variables###
+assembly_stats_csv <- "home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/ #csv file path only needs to be changed if moved
+
+assembly_stats = read.table(assembly_stats_csv, header=T, sep = ",") 
 assembly_stats_fixed = as.data.frame(apply(assembly_stats, 2, function(x) gsub("\\st", "", x)))
 assembly_stats_fixed = assembly_stats_fixed %>%
   mutate(type = ifelse(grepl("CM", Isolate), 'c', 'd')) 
@@ -98,33 +116,36 @@ print(reads_mapping_pilS)
 
 ```
 
-Make bargraph of depth of coverage across whole genome
+Make bargraph of depth across whole genome
 ```{r, out.width="50%", fig.width=13, fig.height=8, dpi=300, echo = FALSE}
 library (ggplot2)
 library(dplyr)
-NZ96294_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ96294/NZ96294_coverage.txt") 
-NZ97019_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97019/NZ97019_coverage.txt") 
-NZ97021_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97021/NZ97021_coverage.txt") 
-NZ97052_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97052/NZ97052_coverage.txt") 
-NZ97133_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97133/NZ97133_coverage.txt") 
-NZ97192_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97192/NZ97192_coverage.txt") 
-NZ98058_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98058/NZ98058_coverage.txt") 
-NZ98074_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98074/NZ98074_coverage.txt") 
-NZCM111_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM111/NZCM111_coverage.txt") 
-NZCM112_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM112/NZCM112_coverage.txt") 
-NZCM132_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM132/NZCM132_coverage.txt") 
-NZCM133_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM133/NZCM133_coverage.txt") 
-NZCM134_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM134/NZCM134_coverage.txt") 
-NZCM135_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM135/NZCM135_coverage.txt") 
-NZCM148_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM148/NZCM148_coverage.txt") 
-NZCM149_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM149/NZCM149_coverage.txt") 
-NZCM162_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM162/NZCM162_coverage.txt") 
-NZCM165_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM165/NZCM165_coverage.txt") 
-NZCM238_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM238/NZCM238_coverage.txt") 
-NZCM239_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM239/NZCM239_coverage.txt") 
-NZCM240_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM240/NZCM240_coverage.txt")
-NZCM245_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM245/NZCM245_coverage.txt")
-NZCM246_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM246/NZCM246_coverage.txt")
+
+###set variables### 
+#need to set the path to the coverage.txt files for each isolate 
+NZ96294_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZ96294/NZ96294_coverage.txt") 
+NZ97019_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZ97019/NZ97019_coverage.txt") 
+NZ97021_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZ97021/NZ97021_coverage.txt") 
+NZ97052_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZ97052/NZ97052_coverage.txt") 
+NZ97133_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZ97133/NZ97133_coverage.txt") 
+NZ97192_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZ97192/NZ97192_coverage.txt") 
+NZ98058_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZ98058/NZ98058_coverage.txt") 
+NZ98074_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZ98074/NZ98074_coverage.txt") 
+NZCM111_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM111/NZCM111_coverage.txt") 
+NZCM112_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM112/NZCM112_coverage.txt") 
+NZCM132_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM132/NZCM132_coverage.txt") 
+NZCM133_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM133/NZCM133_coverage.txt") 
+NZCM134_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM134/NZCM134_coverage.txt") 
+NZCM135_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM135/NZCM135_coverage.txt") 
+NZCM148_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM148/NZCM148_coverage.txt") 
+NZCM149_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM149/NZCM149_coverage.txt") 
+NZCM162_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM162/NZCM162_coverage.txt") 
+NZCM165_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM165/NZCM165_coverage.txt") 
+NZCM238_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM238/NZCM238_coverage.txt") 
+NZCM239_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM239/NZCM239_coverage.txt") 
+NZCM240_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM240/NZCM240_coverage.txt")
+NZCM245_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM245/NZCM245_coverage.txt")
+NZCM246_depth = read.table("home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZCM246/NZCM246_coverage.txt")
 col_names = c("contig", "position", "depth") 
 colnames(NZ96294_depth) <- col_names 
 colnames(NZ97019_depth) <- col_names 
