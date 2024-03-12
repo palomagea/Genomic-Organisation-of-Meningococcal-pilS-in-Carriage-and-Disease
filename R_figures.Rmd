@@ -1,0 +1,2318 @@
+---
+title: "R_figures"
+author: "Paloma Gea"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Code
+
+Make Graphs for each isolate to show recombination across pilS 
+
+```{r, out.width="90%", fig.width=20, fig.height=13, dpi=300, echo = FALSE}
+library(ggplot2) 
+library(patchwork)
+
+NZ96294_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ96294/NZ96294_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZ96294_pilS_depth$position_adjusted = NZ96294_pilS_depth$position - min(NZ96294_pilS_depth$position) 
+NZ96294_pilS_depth_plot = ggplot(NZ96294_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ96294 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM149_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM149/NZCM149_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM149_pilS_depth$position_adjusted = NZCM149_pilS_depth$position - min(NZCM149_pilS_depth$position) 
+NZCM149_pilS_depth_plot = ggplot(NZCM149_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM149 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM148_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM148/NZCM148_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM148_pilS_depth$position_adjusted = NZCM148_pilS_depth$position - min(NZCM148_pilS_depth$position) 
+NZCM148_pilS_depth_plot = ggplot(NZCM148_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM148 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZ97019_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97019/NZ97019_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZ97019_pilS_depth$position_adjusted = NZ97019_pilS_depth$position - min(NZ97019_pilS_depth$position) 
+NZ97019_pilS_depth_plot = ggplot(NZ97019_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ97019 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM162_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM162/NZCM162_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM162_pilS_depth$position_adjusted = NZCM162_pilS_depth$position - min(NZCM162_pilS_depth$position) 
+NZCM162_pilS_depth_plot = ggplot(NZCM162_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM162 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZ97021_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97021/NZ97021_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZ97021_pilS_depth$position_adjusted = NZ97021_pilS_depth$position - min(NZ97021_pilS_depth$position) 
+NZ97021_pilS_depth_plot = ggplot(NZ97021_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ97021 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM165_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM165/NZCM165_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM165_pilS_depth$position_adjusted = NZCM165_pilS_depth$position - min(NZCM165_pilS_depth$position) 
+NZCM165_pilS_depth_plot = ggplot(NZCM165_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM165 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZ97052_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97052/NZ97052_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZ97052_pilS_depth$position_adjusted = NZ97052_pilS_depth$position - min(NZ97052_pilS_depth$position) 
+NZ97052_pilS_depth_plot = ggplot(NZ97052_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ97052 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM111_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM111/NZCM111_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM111_pilS_depth$position_adjusted = NZCM111_pilS_depth$position - min(NZCM111_pilS_depth$position) 
+NZCM111_pilS_depth_plot = ggplot(NZCM111_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM111 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM112_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM112/NZCM112_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM112_pilS_depth$position_adjusted = NZCM112_pilS_depth$position - min(NZCM112_pilS_depth$position) 
+NZCM112_pilS_depth_plot = ggplot(NZCM112_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM112 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZ97133_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97133/NZ97133_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZ97133_pilS_depth$position_adjusted = NZ97133_pilS_depth$position - min(NZ97133_pilS_depth$position) 
+NZ97133_pilS_depth_plot = ggplot(NZ97133_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ97133 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM132_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM132/NZCM132_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM132_pilS_depth$position_adjusted = NZCM132_pilS_depth$position - min(NZCM132_pilS_depth$position) 
+NZCM132_pilS_depth_plot = ggplot(NZCM132_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM132 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM133_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM133/NZCM133_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM133_pilS_depth$position_adjusted = NZCM133_pilS_depth$position - min(NZCM133_pilS_depth$position) 
+NZCM133_pilS_depth_plot = ggplot(NZCM133_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM133 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM134_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM134/NZCM134_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM134_pilS_depth$position_adjusted = NZCM134_pilS_depth$position - min(NZCM134_pilS_depth$position) 
+NZCM134_pilS_depth_plot = ggplot(NZCM134_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM134 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM135_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM135/NZCM135_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM135_pilS_depth$position_adjusted = NZCM135_pilS_depth$position - min(NZCM135_pilS_depth$position) 
+NZCM135_pilS_depth_plot = ggplot(NZCM135_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM135 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZ97192_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97192/NZ97192_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZ97192_pilS_depth$position_adjusted = NZ97192_pilS_depth$position - min(NZ97192_pilS_depth$position) 
+NZ97192_pilS_depth_plot = ggplot(NZ97192_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ97192 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM238_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM238/NZCM238_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM238_pilS_depth$position_adjusted = NZCM238_pilS_depth$position - min(NZCM238_pilS_depth$position) 
+NZCM238_pilS_depth_plot = ggplot(NZCM238_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM238 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM239_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM239/NZCM239_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM239_pilS_depth$position_adjusted = NZCM239_pilS_depth$position - min(NZCM239_pilS_depth$position) 
+NZCM239_pilS_depth_plot = ggplot(NZCM239_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM239 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM240_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM240/NZCM240_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM240_pilS_depth$position_adjusted = NZCM240_pilS_depth$position - min(NZCM240_pilS_depth$position) 
+NZCM240_pilS_depth_plot = ggplot(NZCM240_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM240 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZ98058_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98058/NZ98058_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZ98058_pilS_depth$position_adjusted = NZ98058_pilS_depth$position - min(NZ98058_pilS_depth$position) 
+NZ98058_pilS_depth_plot = ggplot(NZ98058_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ98058 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM246_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM246/NZCM246_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM246_pilS_depth$position_adjusted = NZCM246_pilS_depth$position - min(NZCM246_pilS_depth$position) 
+NZCM246_pilS_depth_plot = ggplot(NZCM246_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM246 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZ98074_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98074/NZ98074_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZ98074_pilS_depth$position_adjusted = NZ98074_pilS_depth$position - min(NZ98074_pilS_depth$position) 
+NZ98074_pilS_depth_plot = ggplot(NZ98074_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ98074 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+NZCM245_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM245/NZCM245_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+NZCM245_pilS_depth$position_adjusted = NZCM245_pilS_depth$position - min(NZCM245_pilS_depth$position) 
+NZCM245_pilS_depth_plot = ggplot(NZCM245_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM245 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+
+
+all_isolates_depth_plot = (NZ96294_pilS_depth_plot | NZCM149_pilS_depth_plot |  NZCM148_pilS_depth_plot | plot_spacer() | plot_spacer())/ 
+  (NZ97019_pilS_depth_plot | NZCM162_pilS_depth_plot | plot_spacer() | plot_spacer() | plot_spacer())/
+  (NZ97021_pilS_depth_plot | NZCM165_pilS_depth_plot | plot_spacer() | plot_spacer() | plot_spacer())/
+  (NZ97052_pilS_depth_plot | NZCM111_pilS_depth_plot | NZCM112_pilS_depth_plot | plot_spacer() | plot_spacer())/
+  (NZ97133_pilS_depth_plot | NZCM132_pilS_depth_plot | NZCM133_pilS_depth_plot | NZCM134_pilS_depth_plot | NZCM135_pilS_depth_plot)/
+  (NZ97192_pilS_depth_plot | NZCM238_pilS_depth_plot | NZCM239_pilS_depth_plot | NZCM240_pilS_depth_plot | plot_spacer())/
+  (NZ98058_pilS_depth_plot | NZCM246_pilS_depth_plot | plot_spacer() | plot_spacer() | plot_spacer())/
+  (NZ98074_pilS_depth_plot | NZCM245_pilS_depth_plot | plot_spacer() | plot_spacer() | plot_spacer())
+
+plot(all_isolates_depth_plot)
+
+```
+
+
+Make pilS comparison scatter plot
+```{r, out.width="50%", fig.width=10, fig.height=5, dpi=300, echo = FALSE}
+library(ggplot2) 
+pilS_comparison = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/pilS_comparisons.csv", header=T, sep = ",") 
+pilS_comparison$Length.of.PilS.Region.including.fbp.and.lpxC..bp.. <- 
+  as.numeric(gsub("[^0-9.]", "", pilS_comparison$Length.of.PilS.Region.including.fbp.and.lpxC..bp..)) 
+pilS_comparison$Number.of.other.truncated.copies. <- 
+  as.numeric(gsub("[^0-9.]", "", pilS_comparison$Number.of.other.truncated.copies.)) 
+pilS_plot <- ggplot(pilS_comparison, aes(x = Length.of.PilS.Region.including.fbp.and.lpxC..bp.., y = Number.of.other.truncated.copies., color = Type, shape = Type)) +
+  geom_point(size = 5, stroke = 1.5) +
+  scale_color_manual(values = c("c" = "#0077bb", "d" = "#ee7733"), labels = c("Carriage", "Disease")) +
+  scale_shape_manual(values = c("c" = 1, "d" = 4), labels = c("Carriage", "Disease")) +
+  labs(
+    color = "Category",
+    shape = "Category",
+    title = "Length of pilS Region and Number of Silent pilS Copies",
+    x = "Length (bp) pilS Region",
+    y = "Number of Silent pilS Copies"
+  ) +
+  theme_bw() +
+  theme(
+    axis.title = element_text(size = 16),
+    axis.text = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    legend.title = element_text(size = 15),
+    legend.text = element_text(size = 14)
+  )
+plot(pilS_plot)
+```
+
+
+Make scatter plot to show number of silent pilS copies 
+```{r, out.width="50%", fig.width=10, fig.height=5, dpi=300, echo = FALSE}
+library(ggplot2) 
+pilS_comparison = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/pilS_comparisons.csv", header=T, sep = ",") 
+pilS_comparison$Number.of.other.truncated.copies. <- 
+  +    as.numeric(gsub("[^0-9.]", "", pilS_comparison$Number.of.other.truncated.copies.)) 
+pilS_comparison$Isolate.. <- factor(pilS_comparison$Isolate.., levels = unique(pilS_comparison$Isolate)) 
+pilS_plot2 <- ggplot(pilS_comparison, aes(x = Isolate.., y = Number.of.other.truncated.copies., shape = Type, color = Type)) +
+  geom_point(size = 5, stroke = 1.5) +
+  scale_color_manual(values = c("#0077bb", "#ee7733"), labels = c("Carriage", "Disease")) +
+  scale_shape_manual(values = c(1, 4), labels = c("Carriage", "Disease")) +
+  labs(color = "Category", shape = "Category", title = "Number of Silent pilS Copies per Isolate", x = "Isolate", y = "Number of Silent pilS Copies") +
+  theme_bw() +
+  scale_y_continuous(limits = c(0, 13)) + 
+  theme(axis.title = element_text(size = 16),axis.text = element_text(size = 16), plot.title = element_text(size = 18), legend.title = element_text(size = 15), legend.text = element_text(size = 14), axis.text.x = element_text(size = 14, angle = 45, hjust = 1))
+
+plot(pilS_plot2)
+```
+
+Make Bar Graph to show number of reads mapping pilS 
+```{r, out.width="50%", fig.width=10, fig.height=5, dpi=300, echo = FALSE}
+library(ggplot2)
+library(dplyr)
+
+assembly_stats = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/assembly_stats.csv", header=T, sep = ",") 
+assembly_stats_fixed = as.data.frame(apply(assembly_stats, 2, function(x) gsub("\\st", "", x)))
+assembly_stats_fixed = assembly_stats_fixed %>%
+  mutate(type = ifelse(grepl("CM", Isolate), 'c', 'd')) 
+assembly_stats_fixed$Reads_Mapping_PilS <- as.numeric(as.character(assembly_stats_fixed$Reads_Mapping_PilS))
+
+reads_mapping_pilS = ggplot(assembly_stats_fixed, aes(x = Isolate, y = Reads_Mapping_PilS, fill = type)) +
+  geom_col() +
+  theme_bw() +
+  scale_fill_manual(values = c('c' = "#0077bb", 'd' = "#ee7733"), labels = c('c' = 'Carriage', 'd' = 'Disease')) +
+  scale_y_continuous(limits = c(0, 150), breaks = seq(0, 150, by = 10)) +
+  labs(x = "Isolate", y = "Number of Reads", title = "Reads Mapping pilS", fill = "Type") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
+        axis.text.y = element_text(size = 12),
+        axis.title.x = element_text(size = 14),
+        axis.title.y = element_text(size = 14),
+        plot.title = element_text(size = 16),
+        legend.text = element_text(size = 12),
+        legend.title = element_text(size = 14)) 
+
+print(reads_mapping_pilS)
+
+
+```
+
+Make bargraph of depth of coverage across whole genome
+```{r, out.width="50%", fig.width=13, fig.height=8, dpi=300, echo = FALSE}
+library (ggplot2)
+library(dplyr)
+NZ96294_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ96294/NZ96294_coverage.txt") 
+NZ97019_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97019/NZ97019_coverage.txt") 
+NZ97021_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97021/NZ97021_coverage.txt") 
+NZ97052_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97052/NZ97052_coverage.txt") 
+NZ97133_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97133/NZ97133_coverage.txt") 
+NZ97192_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97192/NZ97192_coverage.txt") 
+NZ98058_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98058/NZ98058_coverage.txt") 
+NZ98074_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98074/NZ98074_coverage.txt") 
+NZCM111_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM111/NZCM111_coverage.txt") 
+NZCM112_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM112/NZCM112_coverage.txt") 
+NZCM132_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM132/NZCM132_coverage.txt") 
+NZCM133_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM133/NZCM133_coverage.txt") 
+NZCM134_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM134/NZCM134_coverage.txt") 
+NZCM135_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM135/NZCM135_coverage.txt") 
+NZCM148_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM148/NZCM148_coverage.txt") 
+NZCM149_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM149/NZCM149_coverage.txt") 
+NZCM162_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM162/NZCM162_coverage.txt") 
+NZCM165_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM165/NZCM165_coverage.txt") 
+NZCM238_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM238/NZCM238_coverage.txt") 
+NZCM239_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM239/NZCM239_coverage.txt") 
+NZCM240_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM240/NZCM240_coverage.txt")
+NZCM245_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM245/NZCM245_coverage.txt")
+NZCM246_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM246/NZCM246_coverage.txt")
+col_names = c("contig", "position", "depth") 
+colnames(NZ96294_depth) <- col_names 
+colnames(NZ97019_depth) <- col_names 
+colnames(NZ97021_depth) <- col_names 
+colnames(NZ97052_depth) <- col_names 
+colnames(NZ97133_depth) <- col_names 
+colnames(NZ97192_depth) <- col_names 
+colnames(NZ98058_depth) <- col_names 
+colnames(NZ98074_depth) <- col_names 
+colnames(NZCM111_depth) <- col_names 
+colnames(NZCM112_depth) <- col_names 
+colnames(NZCM132_depth) <- col_names 
+colnames(NZCM133_depth) <- col_names 
+colnames(NZCM134_depth) <- col_names 
+colnames(NZCM135_depth) <- col_names 
+colnames(NZCM148_depth) <- col_names 
+colnames(NZCM149_depth) <- col_names 
+colnames(NZCM162_depth) <- col_names 
+colnames(NZCM165_depth) <- col_names 
+colnames(NZCM238_depth) <- col_names 
+colnames(NZCM239_depth) <- col_names 
+colnames(NZCM240_depth) <- col_names
+colnames(NZCM245_depth) <- col_names 
+colnames(NZCM246_depth) <- col_names
+all_isolates_list = list(NZ96294 = NZ96294_depth, NZ97019 = NZ97019_depth, NZ97021 = NZ97021_depth, NZ97052 = NZ97052_depth, NZ97133 = NZ97133_depth, NZ97192 = NZ97192_depth, NZ98058 = NZ98058_depth, NZ98074 = NZ98074_depth, NZCM111 = NZCM111_depth, NZCM112 = NZCM112_depth, NZCM132 = NZCM132_depth, NZCM133 = NZCM133_depth, NZCM134 = NZCM134_depth, NZCM135 = NZCM135_depth, NZCM148 = NZCM148_depth, NZCM149 = NZCM149_depth, NZCM162 = NZCM162_depth, NZCM165 = NZCM165_depth, NZCM238 = NZCM238_depth, NZCM239 = NZCM239_depth, NZCM240 = NZCM240_depth, NZCM245 = NZCM245_depth, NZCM246 = NZCM246_depth)
+combined_data <- lapply(seq_along(all_isolates_list), function(i) {
+  df <- all_isolates_list[[i]]
+  df$isolate <- names(all_isolates_list)[i]
+  df
+})
+combined_data <- do.call(rbind, combined_data)
+type_values <- ifelse(grepl("CM", combined_data$isolate), "c", "d")
+combined_data_coloured <- cbind(combined_data, type = type_values)
+all_isolates_WG_DOC_plot <- ggplot(combined_data_coloured, aes(x = isolate, y = depth, fill = type)) + 
+  geom_boxplot(position = position_dodge(width = 0.8), alpha = 0.6, outlier.shape = ".") + 
+  labs(x = "Isolate", y = "Depth", title = "Depth at Each Genomic Position for Each Isolate") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, angle = 45, hjust = 1), axis.title = element_text(size = 20), axis.text = element_text(size = 18), plot.title = element_text(size = 22), legend.title = element_text(size = 15), legend.text = element_text(size = 14)) +
+  scale_fill_manual(values = c("c" = "#0077bb", "d" = "#ee7733"), labels = c("Carriage", "Disease")) +
+  scale_y_continuous(limits = c(0, 200), breaks = seq(0, 200, by = 10)) +
+  guides(fill = guide_legend(title = "Isolate Type", override.aes = list(fill = c("#0077bb", "#ee7733"), labels = c("Carriage", "Disease")))) +
+  stat_summary(fun=mean, geom="point", shape=18, size=3, color="black", fill="black")
+plot(all_isolates_WG_DOC_plot)
+```
+
+Make boxplot of average read lengths showing upper and lower bounds 
+```{r, out.width="50%", fig.width=30, fig.height=12, dpi=300, echo = FALSE}
+library (ggplot2)
+library(dplyr)
+library(patchwork)
+
+NZ96294_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ96294/listreadlengths.txt") 
+NZ97019_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97019/listreadlengths.txt") 
+NZ97021_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97021/listreadlengths.txt") 
+NZ97052_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97052/listreadlengths.txt") 
+NZ97133_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97133/listreadlengths.txt") 
+NZ97192_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97192/listreadlengths.txt") 
+NZ98058_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98058/listreadlengths.txt") 
+NZ98074_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98074/listreadlengths.txt") 
+NZCM111_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM111/listreadlengths.txt") 
+NZCM112_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM112/listreadlengths.txt") 
+NZCM132_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM132/listreadlengths.txt") 
+NZCM133_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM133/listreadlengths.txt") 
+NZCM134_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM134/listreadlengths.txt") 
+NZCM135_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM135/listreadlengths.txt") 
+NZCM148_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM148/listreadlengths.txt") 
+NZCM149_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM149/listreadlengths.txt") 
+NZCM162_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM162/listreadlengths.txt") 
+NZCM165_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM165/listreadlengths.txt") 
+NZCM238_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM238/listreadlengths.txt") 
+NZCM239_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM239/listreadlengths.txt") 
+NZCM240_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM240/listreadlengths.txt")
+NZCM245_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM245/listreadlengths.txt")
+NZCM246_read_length = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM246/listreadlengths.txt")
+col_names_read_length = c("read_length")
+colnames(NZ96294_read_length) <- col_names_read_length
+colnames(NZ97019_read_length) <- col_names_read_length
+colnames(NZ97021_read_length) <- col_names_read_length
+colnames(NZ97052_read_length) <- col_names_read_length
+colnames(NZ97133_read_length) <- col_names_read_length
+colnames(NZ97192_read_length) <- col_names_read_length
+colnames(NZ98058_read_length) <- col_names_read_length
+colnames(NZ98074_read_length) <- col_names_read_length
+colnames(NZCM111_read_length) <- col_names_read_length
+colnames(NZCM112_read_length) <- col_names_read_length
+colnames(NZCM132_read_length) <- col_names_read_length
+colnames(NZCM133_read_length) <- col_names_read_length
+colnames(NZCM134_read_length) <- col_names_read_length
+colnames(NZCM135_read_length) <- col_names_read_length
+colnames(NZCM148_read_length) <- col_names_read_length
+colnames(NZCM149_read_length) <- col_names_read_length
+colnames(NZCM162_read_length) <- col_names_read_length
+colnames(NZCM165_read_length) <- col_names_read_length
+colnames(NZCM238_read_length) <- col_names_read_length
+colnames(NZCM239_read_length) <- col_names_read_length
+colnames(NZCM240_read_length) <- col_names_read_length
+colnames(NZCM245_read_length) <- col_names_read_length
+colnames(NZCM246_read_length) <- col_names_read_length
+all_isolates_list_read_length = list(NZ96294 = NZ96294_read_length, NZ97019 = NZ97019_read_length, NZ97021 = NZ97021_read_length, NZ97052 = NZ97052_read_length, NZ97133 = NZ97133_read_length, NZ97192 = NZ97192_read_length, NZ98058 = NZ98058_read_length, NZ98074 = NZ98074_read_length, NZCM111 = NZCM111_read_length, NZCM112 = NZCM112_read_length, NZCM132 = NZCM132_read_length, NZCM133 = NZCM133_read_length, NZCM134 = NZCM134_read_length, NZCM135 = NZCM135_read_length, NZCM148 = NZCM148_read_length, NZCM149 = NZCM149_read_length, NZCM162 = NZCM162_read_length, NZCM165 = NZCM165_read_length, NZCM238 = NZCM238_read_length, NZCM239 = NZCM239_read_length, NZCM240 = NZCM240_read_length, NZCM245 = NZCM245_read_length, NZCM246 = NZCM246_read_length)
+combined_data_read_length <- lapply(seq_along(all_isolates_list_read_length), function(i) {
+  df <- all_isolates_list_read_length[[i]]
+  df$isolate <- names(all_isolates_list_read_length)[i]
+  df
+})
+combined_data_read_length <- do.call(rbind, combined_data_read_length)
+type_values_read_length <- ifelse(grepl("CM", combined_data_read_length$isolate), "c", "d")
+combined_data_read_length_coloured <- cbind(combined_data_read_length, type = type_values_read_length)
+max_read_lengths <- combined_data_read_length_coloured %>%
+  group_by(isolate) %>%
+  summarise(Max = max(read_length))
+combined_data_read_length_coloured_max_values <- combined_data_read_length_coloured %>%
+  left_join(max_read_lengths, by='isolate')
+get_box_stats <- function(y, upper_limit = max(combined_data_read_length_coloured$read_length) * 1.15) {
+  return(data.frame(
+    y = 0.95 * upper_limit,
+    label = paste(
+      "Count =", length(y), "\n",
+      "Mean =", round(mean(y), 2), "\n",
+      "Median =", round(median(y), 2), "\n"
+    )
+  ))
+}
+all_isolates_read_length_plot <- ggplot(combined_data_read_length_coloured_max_values, aes(x = isolate, y = read_length, fill = type)) +
+  geom_boxplot(position = position_dodge(width = 0.8), alpha = 0.6, outlier.shape = ".") +
+  labs(x = "Isolate", y = "Read Length", title = "Read Lengths for Each Isolate") +
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, angle = 45, hjust = 1), axis.title = element_text(size = 25), axis.text = element_text(size = 18), plot.title = element_text(size = 30), legend.title = element_text(size = 25), legend.text = element_text(size = 20)) +
+  scale_fill_manual(values = c("c" = "#0077bb", "d" = "#ee7733"), labels = c("Carriage", "Disease")) +
+  scale_y_continuous() +
+  guides(fill = guide_legend(title = "Isolate Type", override.aes = list(fill = c("#0077bb", "#ee7733"), labels = c("Carriage", "Disease")))) +
+  geom_text(data = combined_data_read_length_coloured_max_values, aes(x = isolate, y = Max, label = sprintf("%.0f", Max)), vjust = -0.5, size = 5, color = "#565052")
+all_isolates_read_length_plot_zoomed = ggplot(combined_data_read_length_coloured_max_values, aes(x = isolate, y = read_length, fill = type)) +
+  geom_boxplot(position = position_dodge(width = 0.8), alpha = 0.6, outlier.shape = ".") +
+  labs(x = "Isolate", y = "Read Length (bp)", title = "Read Lengths for Each Isolate") +
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 25, angle = 45, hjust = 1), axis.title = element_text(size = 30), axis.text = element_text(size = 25), plot.title = element_text(size = 35), legend.title = element_text(size = 25), legend.text = element_text(size = 25)) +
+  scale_fill_manual(values = c("c" = "#0077bb", "d" = "#ee7733"), labels = c("Carriage", "Disease")) +
+  scale_y_continuous(limits = c(0, 20000), breaks = seq(0, 19000, by = 1000)) +
+  guides(fill = guide_legend(title = "Isolate Type", override.aes = list(fill = c("#0077bb", "#ee7733"), size = 18, labels = c("Carriage", "Disease")))) +
+ geom_text(data = combined_data_read_length_coloured_max_values, aes(x = isolate, y = 19500, label = sprintf("%.0f", Max)), vjust = -1, size = 8, color = "#565052") +
+  stat_summary(fun=mean, geom="point", shape=18, size=3, color="black", fill="black")
+
+plot(all_isolates_read_length_plot)
+plot(all_isolates_read_length_plot_zoomed)
+```
+
+Bargraph of quality scores for each isolate 
+```{r, out.width="50%", fig.width=30, fig.height=12, dpi=300, echo = FALSE}
+
+
+library(ggplot2)
+library(readr)
+
+extract_quality <- function(entry) {
+  lines <- strsplit(entry, "\n")[[1]]
+  quality_line <- lines[length(lines)]
+  quality <- as.integer(charToRaw(quality_line)) - 33
+  return(quality)
+}
+
+fastq_files <- c(
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ96294/NZ96294.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM149/NZCM149.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM148/NZCM148.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97019/NZ97019.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM162/NZCM162.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97021/NZ97021.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM165/NZCM165.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97052/NZ97052.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM111/NZCM111.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM112/NZCM112.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97133/NZ97133.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM132/NZCM132.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM133/NZCM133.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM134/NZCM134.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM135/NZCM135.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97192/NZ97192.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM238/NZCM238.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM239/NZCM239.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM240/NZCM240.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98058/NZ98058.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM246/NZCM246.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98074/NZ98074.fastq",
+  "/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM245/NZCM245.fastq"
+)
+
+all_data <- lapply(fastq_files, read_lines)
+
+all_quality_scores <- unlist(lapply(all_data, function(entries) unlist(lapply(entries, extract_quality))))
+
+type_values <- ifelse(grepl("CM", fastq_files), "Carriage", "Disease")
+
+quality_df <- data.frame(
+  Isolate = rep(sapply(strsplit(fastq_files, "/"), tail, 2), sapply(all_quality_scores, length)),
+  QualityScore = unlist(all_quality_scores),
+  Type = rep(type_values, sapply(all_quality_scores, length))
+)
+
+quality_box_plot <- ggplot(quality_df, aes(x = Isolate, y = QualityScore, fill = Type)) +
+  geom_boxplot(alpha = 0.6, outlier.shape = ".") +
+  labs(x = "Isolate", y = "Quality Score", title = "Quality Scores for Each Isolate") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 18, angle = 45, hjust = 1),
+    axis.title = element_text(size = 25),
+    axis.text = element_text(size = 18),
+    plot.title = element_text(size = 30),
+    legend.title = element_text(size = 25),
+    legend.text = element_text(size = 20)
+  ) +
+  scale_fill_manual(values = c("Carriage" = "#0077bb", "Disease" = "#ee7733"), labels = c("Carriage", "Disease"))
+
+
+print(quality_box_plot)
+
+```
+
+
+Deletions across genome - make graph of mean values and standard deviation of each window
+NZ96294
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZ96294_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZ96294/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZ96294_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZ96294_deletions_windows$position <- start_positions
+mean_value_NZ96294 <- mean(NZ96294_deletions_windows$mean)
+sd_value_NZ96294 <- sd(NZ96294_deletions_windows$mean)
+NZ96294_deletions_plot = ggplot(NZ96294_deletions_windows, aes(x = position, y = mean)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_NZ96294, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_NZ96294 - 2 * sd_value_NZ96294, ymax = mean_value_NZ96294 + 2 * sd_value_NZ96294), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Mean Depth", title = "NZ96294 Mean Depth per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())
+## with blue bit for pilS
+NZ96294_deletions_plot_2 = ggplot(NZ96294_deletions_windows, aes(x = position, y = mean)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_NZ96294, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_NZ96294 - 2 * sd_value_NZ96294, ymax = mean_value_NZ96294 + 2 * sd_value_NZ96294), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 625149, xmax = 633833, ymin = -Inf, ymax = Inf), fill = "#0077bbAA", alpha = 0.05) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Mean Depth", title = "NZ96294 Mean Depth per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())
+##zoom in on NZ96294 pilS
+NZ96294_deletions_plot_zoomed = ggplot(NZ96294_deletions_windows, aes(x = position)) +
+  geom_line(aes(y = mean), size = 0.3, color = "black") +
+  geom_line(aes(y = median), size = 0.3, color = "#0077bbAA") +
+  geom_hline(yintercept = mean_value_NZ96294, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_NZ96294 - 2 * sd_value_NZ96294, ymax = mean_value_NZ96294 + 2 * sd_value_NZ96294), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 625149, xmax = 633833, ymin = -Inf, ymax = Inf), fill = "#0077bbAA", alpha = 0.02) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Mean Depth", title = "NZ96294 Mean Depth per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(625149 - 10000, 633833 + 10000))  # Zoom in with buffer
+(NZ96294_deletions_plot / NZ96294_deletions_plot_2 / NZ96294_deletions_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZ96294
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZ96294_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZ96294/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZ96294_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZ96294_deletions_windows$position <- start_positions
+mean_value_of_variance_NZ96294 <- mean(NZ96294_deletions_windows$sample_variance)
+sd_value_of_variance_NZ96294 <- sd(NZ96294_deletions_windows$sample_variance)
+NZ96294_deletions_var_plot = ggplot(NZ96294_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ96294, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ96294 - 2 * sd_value_of_variance_NZ96294, ymax = mean_value_of_variance_NZ96294 + 2 *  sd_value_of_variance_NZ96294), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ96294 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZ96294_deletions_var_plot_2 = ggplot(NZ96294_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ96294, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ96294 - 2 * sd_value_of_variance_NZ96294, ymax = mean_value_of_variance_NZ96294 + 2 *  sd_value_of_variance_NZ96294), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 625149, xmax = 633833, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ96294 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZ96294 pilS
+NZ96294_deletions_var_plot_zoomed = ggplot(NZ96294_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ96294, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ96294 - 2 * sd_value_of_variance_NZ96294, ymax = mean_value_of_variance_NZ96294 + 2 *  sd_value_of_variance_NZ96294), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ96294 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(625149 - 10000, 633833 + 10000))  # Zoom in with buffer
+(NZ96294_deletions_var_plot / NZ96294_deletions_var_plot_2 / NZ96294_deletions_var_plot_zoomed)
+```
+
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM149
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM149_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM149/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM149_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM149_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM149 <- mean(NZCM149_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM149 <- sd(NZCM149_deletions_windows$sample_variance)
+NZCM149_deletions_var_plot = ggplot(NZCM149_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM149, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM149 - 2 * sd_value_of_variance_NZCM149, ymax = mean_value_of_variance_NZCM149 + 2 * sd_value_of_variance_NZCM149), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM149 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM149_deletions_var_plot_2 = ggplot(NZCM149_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM149, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM149 - 2 * sd_value_of_variance_NZCM149, ymax = mean_value_of_variance_NZCM149 + 2 * sd_value_of_variance_NZCM149), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 590328, xmax = 600193, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM149 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM149 pilS
+NZCM149_deletions_var_plot_zoomed = ggplot(NZCM149_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM149, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM149 - 2 * sd_value_of_variance_NZCM149, ymax = mean_value_of_variance_NZCM149 + 2 * sd_value_of_variance_NZCM149), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM149 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(590328 - 10000, 600193 + 10000))  # Zoom in with buffer
+(NZCM149_deletions_var_plot / NZCM149_deletions_var_plot_2 / NZCM149_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM148 (only contig with pilS)
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM148_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM148/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM148_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM148_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM148 <- mean(NZCM148_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM148 <- sd(NZCM148_deletions_windows$sample_variance)
+NZCM148_deletions_var_plot = ggplot(NZCM148_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM148, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM148 - 2 * sd_value_of_variance_NZCM148, ymax = mean_value_of_variance_NZCM148 + 2 * sd_value_of_variance_NZCM148), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM148 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM148_deletions_var_plot_2 = ggplot(NZCM148_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM148, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM148 - 2 * sd_value_of_variance_NZCM148, ymax = mean_value_of_variance_NZCM148 + 2 *  sd_value_of_variance_NZCM148), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 1741777, xmax = 1746990, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM148 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM148 pilS
+NZCM148_deletions_var_plot_zoomed = ggplot(NZCM148_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM148, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM148 - 2 * sd_value_of_variance_NZCM148, ymax = mean_value_of_variance_NZCM148 + 2 *  sd_value_of_variance_NZCM148), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM148 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(1741777 - 10000, 1746990 + 10000))  # Zoom in with buffer
+(NZCM148_deletions_var_plot / NZCM148_deletions_var_plot_2 / NZCM148_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZ97019
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZ97019_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZ97019/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZ97019_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZ97019_deletions_windows$position <- start_positions
+mean_value_of_variance_NZ97019 <- mean(NZ97019_deletions_windows$sample_variance)
+sd_value_of_variance_NZ97019 <- sd(NZ97019_deletions_windows$sample_variance)
+NZ97019_deletions_var_plot = ggplot(NZ97019_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97019, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97019 - 2 * sd_value_of_variance_NZ97019, ymax = mean_value_of_variance_NZ97019 + 2 *  sd_value_of_variance_NZ97019), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97019 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZ97019_deletions_var_plot_2 = ggplot(NZ97019_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97019, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97019 - 2 * sd_value_of_variance_NZ97019, ymax = mean_value_of_variance_NZ97019 + 2 * sd_value_of_variance_NZ97019), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 822049, xmax = 833580, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97019 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZ97019 pilS
+NZ97019_deletions_var_plot_zoomed = ggplot(NZ97019_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97019, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97019 - 2 * sd_value_of_variance_NZ97019, ymax = mean_value_of_variance_NZ97019 + 2 * sd_value_of_variance_NZ97019), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97109 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(822049 - 10000, 833580 + 10000))  # Zoom in with buffer
+(NZ97019_deletions_var_plot / NZ97019_deletions_var_plot_2 / NZ97019_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM162
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM162_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM162/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM162_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM162_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM162 <- mean(NZCM162_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM162 <- sd(NZCM162_deletions_windows$sample_variance)
+NZCM162_deletions_var_plot = ggplot(NZCM162_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM162, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM162 - 2 * sd_value_of_variance_NZCM162, ymax = mean_value_of_variance_NZCM162 + 2 * sd_value_of_variance_NZCM162), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM162 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM162_deletions_var_plot_2 = ggplot(NZCM162_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM162, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM162 - 2 * sd_value_of_variance_NZCM162, ymax = mean_value_of_variance_NZCM162 + 2 *  sd_value_of_variance_NZCM162), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 576632, xmax = 588300, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM162 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM162 pilS
+NZCM162_deletions_var_plot_zoomed = ggplot(NZCM162_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM162, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM162 - 2 * sd_value_of_variance_NZCM162, ymax = mean_value_of_variance_NZCM162 + 2 * sd_value_of_variance_NZCM162), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM162 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(576632 - 10000, 588300 + 10000))  # Zoom in with buffer
+(NZCM162_deletions_var_plot / NZCM162_deletions_var_plot_2 / NZCM162_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZ97021
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZ97021_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZ97021/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZ97021_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZ97021_deletions_windows$position <- start_positions
+mean_value_of_variance_NZ97021 <- mean(NZ97021_deletions_windows$sample_variance)
+sd_value_of_variance_NZ97021 <- sd(NZ97021_deletions_windows$sample_variance)
+NZ97021_deletions_var_plot = ggplot(NZ97021_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97021, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97021 - 2 * sd_value_of_variance_NZ97021, ymax = mean_value_of_variance_NZ97021 + 2 * sd_value_of_variance_NZ97021), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97021 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZ97021_deletions_var_plot_2 = ggplot(NZ97021_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97021, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97021 - 2 * sd_value_of_variance_NZ97021, ymax = mean_value_of_variance_NZ97021 + 2 * sd_value_of_variance_NZ97021), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 518724, xmax = 529953, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97021 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZ97021 pilS
+NZ97021_deletions_var_plot_zoomed = ggplot(NZ97021_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97021, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97021 - 2 * sd_value_of_variance_NZ97021, ymax = mean_value_of_variance_NZ97021 + 2 *  sd_value_of_variance_NZ97021), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97021 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(518724 - 10000, 529953 + 10000))  # Zoom in with buffer
+(NZ97021_deletions_var_plot / NZ97021_deletions_var_plot_2 / NZ97021_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM165
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM165_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM165/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM165_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM165_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM165 <- mean(NZCM165_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM165 <- sd(NZCM165_deletions_windows$sample_variance)
+NZCM165_deletions_var_plot = ggplot(NZCM165_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM165, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM165 - 2 * sd_value_of_variance_NZCM165, ymax = mean_value_of_variance_NZCM165 + 2 *  sd_value_of_variance_NZCM165), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM165 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM165_deletions_var_plot_2 = ggplot(NZCM165_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM165, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM165 - 2 * sd_value_of_variance_NZCM165, ymax = mean_value_of_variance_NZCM165 + 2 * sd_value_of_variance_NZCM165), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 693932, xmax = 705466, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM165 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM165 pilS
+NZCM165_deletions_var_plot_zoomed = ggplot(NZCM165_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM165, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM165 - 2 * sd_value_of_variance_NZCM165, ymax = mean_value_of_variance_NZCM165 + 2 * sd_value_of_variance_NZCM165), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM165 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(693932 - 10000, 705466 + 10000))  # Zoom in with buffer
+(NZCM165_deletions_var_plot / NZCM165_deletions_var_plot_2 / NZCM165_deletions_var_plot_zoomed)
+```
+
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZ97052
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZ97052_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZ97052/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZ97052_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZ97052_deletions_windows$position <- start_positions
+mean_value_of_variance_NZ97052 <- mean(NZ97052_deletions_windows$sample_variance)
+sd_value_of_variance_NZ97052 <- sd(NZ97052_deletions_windows$sample_variance)
+NZ97052_deletions_var_plot = ggplot(NZ97052_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97052, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97052 - 2 * sd_value_of_variance_NZ97052, ymax = mean_value_of_variance_NZ97052 + 2 * sd_value_of_variance_NZ97052), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97052 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZ97052_deletions_var_plot_2 = ggplot(NZ97052_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97052, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97052 - 2 * sd_value_of_variance_NZ97052, ymax = mean_value_of_variance_NZ97052 + 2 *   sd_value_of_variance_NZ97052), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 583247, xmax = 588841, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97052 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZ97052 pilS
+NZ97052_deletions_var_plot_zoomed = ggplot(NZ97052_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97052, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97052 - 2 * sd_value_of_variance_NZ97052, ymax = mean_value_of_variance_NZ97052 + 2 *  sd_value_of_variance_NZ97052), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97052 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(583247 - 10000, 588841 + 10000))  # Zoom in with buffer
+(NZ97052_deletions_var_plot / NZ97052_deletions_var_plot_2 / NZ97052_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM111 (only showing contig with pilS)
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM111_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM111/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM111_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM111_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM111 <- mean(NZCM111_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM111 <- sd(NZCM111_deletions_windows$sample_variance)
+NZCM111_deletions_var_plot = ggplot(NZCM111_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM111, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM111 - 2 * sd_value_of_variance_NZCM111, ymax = mean_value_of_variance_NZCM111 + 2 * sd_value_of_variance_NZCM111), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +  coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM111 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM111_deletions_var_plot_2 = ggplot(NZCM111_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM111, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM111 - 2 * sd_value_of_variance_NZCM111, ymax = mean_value_of_variance_NZCM111 + 2 * sd_value_of_variance_NZCM111), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 1169964, xmax = 1175563, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) + coord_cartesian(ylim = c(0, 300)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM111 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM111 pilS
+NZCM111_deletions_var_plot_zoomed = ggplot(NZCM111_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM111, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM111 - 2 * sd_value_of_variance_NZCM111, ymax = mean_value_of_variance_NZCM111 + 2 * sd_value_of_variance_NZCM111), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM111 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(1169964 - 10000, 1175563 + 10000))  # Zoom in with buffer
+(NZCM111_deletions_var_plot / NZCM111_deletions_var_plot_2 / NZCM111_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM112
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM112_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM112/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM112_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM112_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM112 <- mean(NZCM112_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM112 <- sd(NZCM112_deletions_windows$sample_variance)
+NZCM112_deletions_var_plot = ggplot(NZCM112_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM112, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM112 - 2 * sd_value_of_variance_NZCM112, ymax = mean_value_of_variance_NZCM112 + 2 * sd_value_of_variance_NZCM112), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM112 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM112_deletions_var_plot_2 = ggplot(NZCM112_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM112, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM112 - 2 * sd_value_of_variance_NZCM112, ymax = mean_value_of_variance_NZCM112 + 2 * sd_value_of_variance_NZCM112), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 1874569, xmax = 1880163, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM112 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM112 pilS
+NZCM112_deletions_var_plot_zoomed = ggplot(NZCM112_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM112, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM112 - 2 * sd_value_of_variance_NZCM112, ymax = mean_value_of_variance_NZCM112 + 2 * sd_value_of_variance_NZCM112), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM112 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(1874569 - 10000, 1880163 + 10000))  # Zoom in with buffer
+(NZCM112_deletions_var_plot / NZCM112_deletions_var_plot_2 / NZCM112_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZ97133
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZ97133_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZ97133/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZ97133_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZ97133_deletions_windows$position <- start_positions
+mean_value_of_variance_NZ97133 <- mean(NZ97133_deletions_windows$sample_variance)
+sd_value_of_variance_NZ97133 <- sd(NZ97133_deletions_windows$sample_variance)
+NZ97133_deletions_var_plot = ggplot(NZ97133_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97133, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97133 - 2 * sd_value_of_variance_NZ97133, ymax = mean_value_of_variance_NZ97133 + 2 * sd_value_of_variance_NZ97133), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97133 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZ97133_deletions_var_plot_2 = ggplot(NZ97133_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97133, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97133 - 2 * sd_value_of_variance_NZ97133, ymax = mean_value_of_variance_NZ97133 + 2 * sd_value_of_variance_NZ97133), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 1653703, xmax = 1663025, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97133 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZ97133 pilS
+NZ97133_deletions_var_plot_zoomed = ggplot(NZ97133_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97133, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97133 - 2 * sd_value_of_variance_NZ97133, ymax = mean_value_of_variance_NZ97133 + 2 * sd_value_of_variance_NZ97133), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97133 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(1653703 - 10000, 1663025 + 10000))  # Zoom in with buffer
+(NZ97133_deletions_var_plot / NZ97133_deletions_var_plot_2 / NZ97133_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM132
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM132_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM132/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM132_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM132_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM132 <- mean(NZCM132_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM132 <- sd(NZCM132_deletions_windows$sample_variance)
+NZCM132_deletions_var_plot = ggplot(NZCM132_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM132, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM132 - 2 * sd_value_of_variance_NZCM132, ymax = mean_value_of_variance_NZCM132 + 2 * sd_value_of_variance_NZCM132), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM132 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM132_deletions_var_plot_2 = ggplot(NZCM132_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM132, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM132 - 2 * sd_value_of_variance_NZCM132, ymax = mean_value_of_variance_NZCM132 + 2 * sd_value_of_variance_NZCM132), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 1661484, xmax = 1667587, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM132 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM132 pilS
+NZCM132_deletions_var_plot_zoomed = ggplot(NZCM132_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM132, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM132 - 2 * sd_value_of_variance_NZCM132, ymax = mean_value_of_variance_NZCM132 + 2 * sd_value_of_variance_NZCM132), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM132 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(1661484 - 10000, 1667587 + 10000))  # Zoom in with buffer
+(NZCM132_deletions_var_plot / NZCM132_deletions_var_plot_2 / NZCM132_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM133
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM133_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM133/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM133_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM133_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM133 <- mean(NZCM133_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM133 <- sd(NZCM133_deletions_windows$sample_variance)
+NZCM133_deletions_var_plot = ggplot(NZCM133_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM133, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM133 - 2 * sd_value_of_variance_NZCM133, ymax = mean_value_of_variance_NZCM133 + 2 * sd_value_of_variance_NZCM133), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM133 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM133_deletions_var_plot_2 = ggplot(NZCM133_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM133, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM133 - 2 * sd_value_of_variance_NZCM133, ymax = mean_value_of_variance_NZCM133 + 2 * sd_value_of_variance_NZCM133), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 427452, xmax = 437391, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM133 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM133 pilS
+NZCM133_deletions_var_plot_zoomed = ggplot(NZCM133_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM133, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM133 - 2 * sd_value_of_variance_NZCM133, ymax = mean_value_of_variance_NZCM133 + 2 * sd_value_of_variance_NZCM133), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM133 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(427452 - 10000, 437391 + 10000))  # Zoom in with buffer
+(NZCM133_deletions_var_plot / NZCM133_deletions_var_plot_2 / NZCM133_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM134
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM134_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM134/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM134_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM134_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM134 <- mean(NZCM134_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM134 <- sd(NZCM134_deletions_windows$sample_variance)
+NZCM134_deletions_var_plot = ggplot(NZCM134_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM134, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM134 - 2 * sd_value_of_variance_NZCM134, ymax = mean_value_of_variance_NZCM134 + 2 * sd_value_of_variance_NZCM134), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM134 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM134_deletions_var_plot_2 = ggplot(NZCM134_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM134, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM134 - 2 * sd_value_of_variance_NZCM134, ymax = mean_value_of_variance_NZCM134 + 2 * sd_value_of_variance_NZCM134), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 284512, xmax = 294466, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM134 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM134 pilS
+NZCM134_deletions_var_plot_zoomed = ggplot(NZCM134_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM134, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM134 - 2 * sd_value_of_variance_NZCM134, ymax = mean_value_of_variance_NZCM134 + 2 * sd_value_of_variance_NZCM134), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM134 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(284512 - 10000, 294466 + 10000))  # Zoom in with buffer
+(NZCM134_deletions_var_plot / NZCM134_deletions_var_plot_2 / NZCM134_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM135
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM135_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM135/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM135_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM135_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM135 <- mean(NZCM135_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM135 <- sd(NZCM135_deletions_windows$sample_variance)
+NZCM135_deletions_var_plot = ggplot(NZCM135_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM135, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM135 - 2 * sd_value_of_variance_NZCM135, ymax = mean_value_of_variance_NZCM135 + 2 * sd_value_of_variance_NZCM135), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM135 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM135_deletions_var_plot_2 = ggplot(NZCM135_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM135, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM135 - 2 * sd_value_of_variance_NZCM135, ymax = mean_value_of_variance_NZCM135 + 2 * sd_value_of_variance_NZCM135), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 432670, xmax = 442173, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM135 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM135 pilS
+NZCM135_deletions_var_plot_zoomed = ggplot(NZCM135_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM135, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM135 - 2 * sd_value_of_variance_NZCM135, ymax = mean_value_of_variance_NZCM135 + 2 * sd_value_of_variance_NZCM135), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZC135 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(432670 - 10000, 442173 + 10000))  # Zoom in with buffer
+(NZCM135_deletions_var_plot / NZCM135_deletions_var_plot_2 / NZCM135_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZ97192
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZ97192_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZ97192/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZ97192_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZ97192_deletions_windows$position <- start_positions
+mean_value_of_variance_NZ97192 <- mean(NZ97192_deletions_windows$sample_variance)
+sd_value_of_variance_NZ97192 <- sd(NZ97192_deletions_windows$sample_variance)
+NZ97192_deletions_var_plot = ggplot(NZ97192_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97192, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97192 - 2 * sd_value_of_variance_NZ97192, ymax = mean_value_of_variance_NZ97192 + 2 * sd_value_of_variance_NZ97192), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97192 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZ97192_deletions_var_plot_2 = ggplot(NZ97192_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97192, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97192 - 2 * sd_value_of_variance_NZ97192, ymax = mean_value_of_variance_NZ97192 + 2 * sd_value_of_variance_NZ97192), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 290821, xmax = 299597, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97192 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZ97192 pilS
+NZ97192_deletions_var_plot_zoomed = ggplot(NZ97192_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ97192, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ97192 - 2 * sd_value_of_variance_NZ97192, ymax = mean_value_of_variance_NZ97192 + 2 * sd_value_of_variance_NZ97192), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ97192 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(290821 - 10000, 299597 + 10000))  # Zoom in with buffer
+(NZ97192_deletions_var_plot / NZ97192_deletions_var_plot_2 / NZ97192_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM238
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM238_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM238/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM238_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM238_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM238 <- mean(NZCM238_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM238 <- sd(NZCM238_deletions_windows$sample_variance)
+NZCM238_deletions_var_plot = ggplot(NZCM238_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM238, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM238 - 2 * sd_value_of_variance_NZCM238, ymax = mean_value_of_variance_NZCM238 + 2 * sd_value_of_variance_NZCM238), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM238 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM238_deletions_var_plot_2 = ggplot(NZCM238_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM238, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM238 - 2 * sd_value_of_variance_NZCM238, ymax = mean_value_of_variance_NZCM238 + 2 * sd_value_of_variance_NZCM238), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 1916612, xmax = 1922455, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM238 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM238 pilS
+NZCM238_deletions_var_plot_zoomed = ggplot(NZCM238_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM238, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM238 - 2 * sd_value_of_variance_NZCM238, ymax = mean_value_of_variance_NZCM238 + 2 * sd_value_of_variance_NZCM238), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM238 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(1916612 - 10000, 1922455 + 10000))  # Zoom in with buffer
+(NZCM238_deletions_var_plot / NZCM238_deletions_var_plot_2 / NZCM238_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM239
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM239_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM239/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM239_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM239_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM239 <- mean(NZCM239_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM239 <- sd(NZCM239_deletions_windows$sample_variance)
+NZCM239_deletions_var_plot = ggplot(NZCM239_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM239, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM239 - 2 * sd_value_of_variance_NZCM239, ymax = mean_value_of_variance_NZCM239 + 2 * sd_value_of_variance_NZCM239), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM239 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM239_deletions_var_plot_2 = ggplot(NZCM239_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM239, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM239 - 2 * sd_value_of_variance_NZCM239, ymax = mean_value_of_variance_NZCM239 + 2 * sd_value_of_variance_NZCM239), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 1709653, xmax = 1718426, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM239 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM239 pilS
+NZCM239_deletions_var_plot_zoomed = ggplot(NZCM239_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM239, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM239 - 2 * sd_value_of_variance_NZCM239, ymax = mean_value_of_variance_NZCM239 + 2 * sd_value_of_variance_NZCM239), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM239 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(1709653 - 10000, 1718426 + 10000))  # Zoom in with buffer
+
+(NZCM239_deletions_var_plot / NZCM239_deletions_var_plot_2 / NZCM239_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM240
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM240_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM240/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM240_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM240_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM240 <- mean(NZCM240_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM240 <- sd(NZCM240_deletions_windows$sample_variance)
+NZCM240_deletions_var_plot = ggplot(NZCM240_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM240, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM240 - 2 * sd_value_of_variance_NZCM240, ymax = mean_value_of_variance_NZCM240 + 2 * sd_value_of_variance_NZCM240), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM240 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM240_deletions_var_plot_2 = ggplot(NZCM240_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM240, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM240 - 2 * sd_value_of_variance_NZCM240, ymax = mean_value_of_variance_NZCM240 + 2 * sd_value_of_variance_NZCM240), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 1625720, xmax = 1633236, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM240 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM240 pilS
+NZCM240_deletions_var_plot_zoomed = ggplot(NZCM240_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM240, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM240 - 2 * sd_value_of_variance_NZCM240, ymax = mean_value_of_variance_NZCM240 + 2 * sd_value_of_variance_NZCM240), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM240 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(1625720 - 10000, 1633236 + 10000))  # Zoom in with buffer
+(NZCM240_deletions_var_plot / NZCM240_deletions_var_plot_2 / NZCM240_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZ98058
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZ98058_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZ98058/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZ98058_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZ98058_deletions_windows$position <- start_positions
+mean_value_of_variance_NZ98058 <- mean(NZ98058_deletions_windows$sample_variance)
+sd_value_of_variance_NZ98058 <- sd(NZ98058_deletions_windows$sample_variance)
+NZ98058_deletions_var_plot = ggplot(NZ98058_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ98058, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ98058 - 2 * sd_value_of_variance_NZ98058, ymax = mean_value_of_variance_NZ98058 + 2 * sd_value_of_variance_NZ98058), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ98058 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZ98058_deletions_var_plot_2 = ggplot(NZ98058_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ98058, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ98058 - 2 * sd_value_of_variance_NZ98058, ymax = mean_value_of_variance_NZ98058 + 2 * sd_value_of_variance_NZ98058), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 1710128, xmax = 1718957, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ98058 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZ98058 pilS
+NZ98058_deletions_var_plot_zoomed = ggplot(NZ98058_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ98058, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ98058 - 2 * sd_value_of_variance_NZ98058, ymax = mean_value_of_variance_NZ98058 + 2 * sd_value_of_variance_NZ98058), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ98058 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(1710128 - 10000, 1718957 + 10000))  # Zoom in with buffer
+(NZ98058_deletions_var_plot / NZ98058_deletions_var_plot_2 / NZ98058_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM246
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM246_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM246/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM246_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM246_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM246 <- mean(NZCM246_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM246 <- sd(NZCM246_deletions_windows$sample_variance)
+NZCM246_deletions_var_plot = ggplot(NZCM246_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM246, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM246 - 2 * sd_value_of_variance_NZCM246, ymax = mean_value_of_variance_NZCM246 + 2 * sd_value_of_variance_NZCM246), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM246 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM246_deletions_var_plot_2 = ggplot(NZCM246_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM246, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM246 - 2 * sd_value_of_variance_NZCM246, ymax = mean_value_of_variance_NZCM246 + 2 * sd_value_of_variance_NZCM246), fill = "#ee7733AA") +
+  geom_rect(aes(xmin = 431221, xmax = 436421, ymin = -Inf, ymax = Inf), fill = "#0077bbAA", alpha = 0.05) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM246 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM246 pilS
+NZCM246_deletions_var_plot_zoomed = ggplot(NZCM246_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM246, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM246 - 2 * sd_value_of_variance_NZCM246, ymax = mean_value_of_variance_NZCM246 + 2 * sd_value_of_variance_NZCM246), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM246 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(431221 - 10000, 436421 + 10000))  # Zoom in with buffer
+(NZCM246_deletions_var_plot / NZCM246_deletions_var_plot_2 / NZCM246_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZ98074
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZ98074_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZ98074/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZ98074_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZ98074_deletions_windows$position <- start_positions
+mean_value_of_variance_NZ98074 <- mean(NZ98074_deletions_windows$sample_variance)
+sd_value_of_variance_NZ98074 <- sd(NZ98074_deletions_windows$sample_variance)
+NZ98074_deletions_var_plot = ggplot(NZ98074_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ98074, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ98074 - 2 * sd_value_of_variance_NZ98074, ymax = mean_value_of_variance_NZ98074 + 2 * sd_value_of_variance_NZ98074), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ98074 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZ98074_deletions_var_plot_2 = ggplot(NZ98074_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ98074, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ98074 - 2 * sd_value_of_variance_NZ98074, ymax = mean_value_of_variance_NZ98074 + 2 * sd_value_of_variance_NZ98074), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 431515, xmax = 437740, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ98074 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZ98074 pilS
+NZ98074_deletions_var_plot_zoomed = ggplot(NZ98074_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZ98074, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZ98074 - 2 * sd_value_of_variance_NZ98074, ymax = mean_value_of_variance_NZ98074 + 2 * sd_value_of_variance_NZ98074), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZ98074 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(431515 - 10000, 437740 + 10000))  # Zoom in with buffer
+(NZ98074_deletions_var_plot / NZ98074_deletions_var_plot_2 / NZ98074_deletions_var_plot_zoomed)
+```
+
+Deletions across genome - make graph of variance values and standard deviation of this variance at each window
+NZCM245
+```{r, out.width="50%", fig.width=12, fig.height=8, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+NZCM245_deletions_windows = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/deletions_across_genome/NZCM245/averages_per_window.txt", sep="\t", header=TRUE)
+start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", NZCM245_deletions_windows$window)
+start_positions <- as.numeric(start_positions)
+NZCM245_deletions_windows$position <- start_positions
+mean_value_of_variance_NZCM245 <- mean(NZCM245_deletions_windows$sample_variance)
+sd_value_of_variance_NZCM245 <- sd(NZCM245_deletions_windows$sample_variance)
+NZCM245_deletions_var_plot = ggplot(NZCM245_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM245, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM245 - 2 * sd_value_of_variance_NZCM245, ymax = mean_value_of_variance_NZCM245 + 2 * sd_value_of_variance_NZCM245), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM245 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+## with blue bit for pilS
+NZCM245_deletions_var_plot_2 = ggplot(NZCM245_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM245, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM245 - 2 * sd_value_of_variance_NZCM245, ymax = mean_value_of_variance_NZCM245 + 2 * sd_value_of_variance_NZCM245), fill = "#ee7733AA", alpha = 0.2) +
+  geom_rect(aes(xmin = 1648271, xmax = 1656822, ymin = -Inf, ymax = Inf), fill = "#0077bbAA") +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM245 Variance of Depth of Coverage per 10kb Windows") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line())+
+  coord_cartesian(ylim = c(0,100))
+##zoom in on NZCM245 pilS
+NZCM245_deletions_var_plot_zoomed = ggplot(NZCM245_deletions_windows, aes(x = position, y = sample_variance)) +
+  geom_line(size = 0.3) +
+  geom_hline(yintercept = mean_value_of_variance_NZCM245, linetype = "dotted", color = "#ee7733") +
+  geom_ribbon(aes(ymin = mean_value_of_variance_NZCM245 - 2 * sd_value_of_variance_NZCM245, ymax = mean_value_of_variance_NZCM245 + 2 * sd_value_of_variance_NZCM245), fill = "#ee7733AA", alpha = 0.2) +
+  scale_x_continuous(labels = scales::comma_format(scale = 1, accuracy = 1), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Genomic Position", y = "Variance", title = "NZCM245 Variance of Depth of Coverage per 10kb Windows zoomed on pilS +/- 1kb") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    plot.title = element_text(size = 18),
+    axis.line = element_line()
+  ) +
+  coord_cartesian(xlim = c(1648271 - 10000, 1656822 + 10000))  # Zoom in with buffer
+(NZCM245_deletions_var_plot / NZCM245_deletions_var_plot_2 / NZCM245_deletions_var_plot_zoomed)
+```
+All the variance plots 
+```{r, out.width="50%", fig.width=40, fig.height=20, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+(NZ96294_deletions_var_plot | NZCM149_deletions_var_plot |  NZCM148_deletions_var_plot | plot_spacer() | plot_spacer())/ 
+  (NZ97019_deletions_var_plot | NZCM162_deletions_var_plot | plot_spacer() | plot_spacer() | plot_spacer()) / 
+  (NZ97021_deletions_var_plot | NZCM165_deletions_var_plot | plot_spacer() | plot_spacer() | plot_spacer()) / 
+  (NZ97052_deletions_var_plot | NZCM111_deletions_var_plot | NZCM112_deletions_var_plot | plot_spacer() | plot_spacer()) /
+  (NZ97133_deletions_var_plot | NZCM132_deletions_var_plot | NZCM133_deletions_var_plot | NZCM134_deletions_var_plot | NZCM135_deletions_var_plot) /
+  (NZ97192_deletions_var_plot | NZCM238_deletions_var_plot | NZCM239_deletions_var_plot | NZCM240_deletions_var_plot | plot_spacer()) /
+  (NZ98058_deletions_var_plot | NZCM246_deletions_var_plot | plot_spacer() | plot_spacer() | plot_spacer()) /
+  (NZ98074_deletions_var_plot | NZCM245_deletions_var_plot | plot_spacer() | plot_spacer() | plot_spacer())
+```
+
+
+All the variance plots together with pilS marked 
+```{r, out.width="50%", fig.width=40, fig.height=20, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+(NZ96294_deletions_var_plot_2 | NZCM149_deletions_var_plot_2 |  NZCM148_deletions_var_plot_2 | plot_spacer() | plot_spacer())/ 
+  (NZ97019_deletions_var_plot_2 | NZCM162_deletions_var_plot_2 | plot_spacer() | plot_spacer() | plot_spacer()) / 
+  (NZ97021_deletions_var_plot_2 | NZCM165_deletions_var_plot_2 | plot_spacer() | plot_spacer() | plot_spacer()) / 
+  (NZ97052_deletions_var_plot_2 | NZCM111_deletions_var_plot_2 | NZCM112_deletions_var_plot_2 | plot_spacer() | plot_spacer()) /
+  (NZ97133_deletions_var_plot_2 | NZCM132_deletions_var_plot_2 | NZCM133_deletions_var_plot_2 | NZCM134_deletions_var_plot_2 | NZCM135_deletions_var_plot_2) /
+  (NZ97192_deletions_var_plot_2 | NZCM238_deletions_var_plot_2 | NZCM239_deletions_var_plot_2 | NZCM240_deletions_var_plot_2 | plot_spacer()) /
+  (NZ98058_deletions_var_plot_2 | NZCM246_deletions_var_plot_2 | plot_spacer() | plot_spacer() | plot_spacer()) /
+  (NZ98074_deletions_var_plot_2 | NZCM245_deletions_var_plot_2 | plot_spacer() | plot_spacer() | plot_spacer())
+```
+All the variance plots together zoomed in 
+```{r, out.width="50%", fig.width=40, fig.height=20, dpi=300, echo = FALSE}
+library(ggplot2)
+library(patchwork)
+
+(NZ96294_deletions_var_plot_zoomed | NZCM149_deletions_var_plot_zoomed |  NZCM148_deletions_var_plot_zoomed | plot_spacer() | plot_spacer())/ 
+  (NZ97019_deletions_var_plot_zoomed | NZCM162_deletions_var_plot_zoomed | plot_spacer() | plot_spacer() | plot_spacer()) / 
+  (NZ97021_deletions_var_plot_zoomed | NZCM165_deletions_var_plot_zoomed | plot_spacer() | plot_spacer() | plot_spacer()) / 
+  (NZ97052_deletions_var_plot_zoomed | NZCM111_deletions_var_plot_zoomed | NZCM112_deletions_var_plot_zoomed | plot_spacer() | plot_spacer()) /
+  (NZ97133_deletions_var_plot_zoomed | NZCM132_deletions_var_plot_zoomed | NZCM133_deletions_var_plot_zoomed | NZCM134_deletions_var_plot_zoomed | NZCM135_deletions_var_plot_zoomed) /
+  (NZ97192_deletions_var_plot_zoomed | NZCM238_deletions_var_plot_zoomed | NZCM239_deletions_var_plot_zoomed | NZCM240_deletions_var_plot_zoomed | plot_spacer()) /
+  (NZ98058_deletions_var_plot_zoomed | NZCM246_deletions_var_plot_zoomed | plot_spacer() | plot_spacer() | plot_spacer()) /
+  (NZ98074_deletions_var_plot_zoomed | NZCM245_deletions_var_plot_zoomed | plot_spacer() | plot_spacer() | plot_spacer())
+```
+
+
+box plot of variances per 10kb window for each isolate 
+
+```{r, out.width="50%", fig.width=18, fig.height=13, dpi=300, echo = FALSE}
+library (ggplot2)
+library(dplyr)
+library(patchwork)
+
+
+col_names_deletions_windows = c("window","mean","mode","median","sample_variance","standard_deviation","minimum","maximum","position")
+colnames(NZ96294_deletions_windows) <- col_names_deletions_windows
+colnames(NZ97019_deletions_windows) <- col_names_deletions_windows
+colnames(NZ97021_deletions_windows) <- col_names_deletions_windows
+colnames(NZ97052_deletions_windows) <- col_names_deletions_windows
+colnames(NZ97133_deletions_windows) <- col_names_deletions_windows
+colnames(NZ97192_deletions_windows) <- col_names_deletions_windows
+colnames(NZ98058_deletions_windows) <- col_names_deletions_windows
+colnames(NZ98074_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM111_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM112_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM132_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM133_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM134_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM135_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM148_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM149_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM162_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM165_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM238_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM239_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM240_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM245_deletions_windows) <- col_names_deletions_windows
+colnames(NZCM246_deletions_windows) <- col_names_deletions_windows
+all_isolates_list_deletions_windows = list(NZ96294 = NZ96294_deletions_windows, NZ97019 = NZ97019_deletions_windows, NZ97021 = NZ97021_deletions_windows, NZ97052 = NZ97052_deletions_windows, NZ97133 = NZ97133_deletions_windows, NZ97192 = NZ97192_deletions_windows, NZ98058 = NZ98058_deletions_windows, NZ98074 = NZ98074_deletions_windows, NZCM111 = NZCM111_deletions_windows, NZCM112 = NZCM112_deletions_windows, NZCM132 = NZCM132_deletions_windows, NZCM133 = NZCM133_deletions_windows, NZCM134 = NZCM134_deletions_windows, NZCM135 = NZCM135_deletions_windows, NZCM148 = NZCM148_deletions_windows, NZCM149 = NZCM149_deletions_windows, NZCM162 = NZCM162_deletions_windows, NZCM165 = NZCM165_deletions_windows, NZCM238 = NZCM238_deletions_windows, NZCM239 = NZCM239_deletions_windows, NZCM240 = NZCM240_deletions_windows, NZCM245 = NZCM245_deletions_windows, NZCM246 = NZCM246_deletions_windows)
+combined_data_deletions_windows <- lapply(seq_along(all_isolates_list_deletions_windows), function(i) {
+  df <- all_isolates_list_deletions_windows[[i]]
+  df$isolate <- names(all_isolates_list_deletions_windows)[i]
+  df})
+combined_data_deletions_windows <- do.call(rbind, combined_data_deletions_windows)
+type_values_deletions_windows <- ifelse(grepl("CM", combined_data_deletions_windows$isolate), "c", "d")
+combined_data_deletions_windows_coloured <- cbind(combined_data_deletions_windows, type = type_values_deletions_windows)
+combined_data_deletions_windows_coloured$pilS <- "no"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZ96294" & 
+                                              combined_data_deletions_windows_coloured$position >= 619500 & 
+                                              combined_data_deletions_windows_coloured$position <= 629500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM149" & 
+                                              combined_data_deletions_windows_coloured$position >= 585500 & 
+                                              combined_data_deletions_windows_coloured$position <= 595500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM148" & 
+                                              combined_data_deletions_windows_coloured$position >= 950500 & 
+                                              combined_data_deletions_windows_coloured$position <= 960500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZ97019" & 
+                                              combined_data_deletions_windows_coloured$position >= 818000 & 
+                                              combined_data_deletions_windows_coloured$position <= 828000] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM162" & 
+                                              combined_data_deletions_windows_coloured$position >= 572500 & 
+                                              combined_data_deletions_windows_coloured$position <= 582500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZ97021" & 
+                                              combined_data_deletions_windows_coloured$position >= 514500 & 
+                                              combined_data_deletions_windows_coloured$position <= 524500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM165" & 
+                                              combined_data_deletions_windows_coloured$position >= 689500 & 
+                                              combined_data_deletions_windows_coloured$position <= 699500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZ97052" & 
+                                              combined_data_deletions_windows_coloured$position >= 576000 & 
+                                              combined_data_deletions_windows_coloured$position <= 586000] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM111" & 
+                                              combined_data_deletions_windows_coloured$position >= 1163000 & 
+                                              combined_data_deletions_windows_coloured$position <= 1173000] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM112" & 
+                                              combined_data_deletions_windows_coloured$position >= 1867500 & 
+                                              combined_data_deletions_windows_coloured$position <= 1877500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZ97133" & 
+                                              combined_data_deletions_windows_coloured$position >= 1648500 & 
+                                              combined_data_deletions_windows_coloured$position <= 1658500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM132" & 
+                                              combined_data_deletions_windows_coloured$position >= 1654500 & 
+                                              combined_data_deletions_windows_coloured$position <= 1664500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM133" & 
+                                              combined_data_deletions_windows_coloured$position >= 422500 & 
+                                              combined_data_deletions_windows_coloured$position <= 432500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM134" & 
+                                              combined_data_deletions_windows_coloured$position >= 279500 & 
+                                              combined_data_deletions_windows_coloured$position <= 289500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM135" & 
+                                              combined_data_deletions_windows_coloured$position >= 427500 & 
+                                              combined_data_deletions_windows_coloured$position <= 437500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZ97192" & 
+                                              combined_data_deletions_windows_coloured$position >= 285000 & 
+                                              combined_data_deletions_windows_coloured$position <= 295000] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM238" & 
+                                              combined_data_deletions_windows_coloured$position >= 1909500 & 
+                                              combined_data_deletions_windows_coloured$position <= 1919500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM239" & 
+                                              combined_data_deletions_windows_coloured$position >= 1704000 & 
+                                              combined_data_deletions_windows_coloured$position <= 1714000] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM240" & 
+                                              combined_data_deletions_windows_coloured$position >= 1619500 & 
+                                              combined_data_deletions_windows_coloured$position <= 1629500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZ98058" & 
+                                              combined_data_deletions_windows_coloured$position >= 1704500 & 
+                                              combined_data_deletions_windows_coloured$position <= 1714500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM246" & 
+                                              combined_data_deletions_windows_coloured$position >= 424000 & 
+                                              combined_data_deletions_windows_coloured$position <= 434000] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZ98074" & 
+                                              combined_data_deletions_windows_coloured$position >= 424500 & 
+                                              combined_data_deletions_windows_coloured$position <= 434500] <- "yes"
+combined_data_deletions_windows_coloured$pilS[combined_data_deletions_windows_coloured$isolate == "NZCM245" & 
+                                              combined_data_deletions_windows_coloured$position >= 1642500 & 
+                                              combined_data_deletions_windows_coloured$position <= 1652500] <- "yes"
+combined_data_deletions_windows_coloured_family <- combined_data_deletions_windows_coloured
+combined_data_deletions_windows_coloured_family$isolate <- factor(combined_data_deletions_windows_coloured$isolate,
+                         c("NZ96294", "NZCM149", "NZCM148", "NZ97019", "NZCM162", "NZ97021", "NZCM165", "NZ97133", "NZCM132", "NZCM133", "NZCM134", "NZCM135", "NZ97192", "NZCM238", "NZCM239", "NZCM240", "NZ98058", "NZCM246", "NZ98074", "NZCM245", "NZ97052", "NZCM111", "NZCM112"))
+
+all_isolates_deletions_windows_plot_carriage_disease <- ggplot(combined_data_deletions_windows_coloured, aes(x = isolate, y = sample_variance)) +
+  geom_boxplot(outlier.shape = 1, outlier.size = 3, outlier.colour = "#C0C0C0") +
+  labs(x = "Isolate", y = "Variance per Window", title = "Variance per 10bk Window of Genome per Isolate") +
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, angle = 45, hjust = 1), axis.title = element_text(size = 25), axis.text = element_text(size = 18), plot.title = element_text(size = 30), legend.title = element_text(size = 25), legend.text = element_text(size = 20)) +
+  scale_y_continuous(trans = 'log2')
+
+
+all_isolates_deletions_windows_plot_carriage_disease + 
+  geom_point(data = combined_data_deletions_windows_coloured, aes(color = pilS), 
+             shape = 1, size = 3) +
+  scale_color_manual(values = c("yes" = "#ee7733", "no" = "#FFFFFF00"), labels = c("Rest of Genome", "pilS")) +
+  labs(color = "pilS") 
+
+all_isolates_deletions_windows_plot_family <- ggplot(combined_data_deletions_windows_coloured_family, aes(x = isolate, y = sample_variance)) +
+  geom_boxplot(outlier.shape = 1, outlier.size = 3, outlier.colour = "#C0C0C0") +
+  labs(x = "Isolate", y = "Variance per Window", title = "Variance per 10bk Window of Genome per Isolate") +
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, angle = 45, hjust = 1), axis.title = element_text(size = 25), axis.text = element_text(size = 18), plot.title = element_text(size = 30), legend.title = element_text(size = 25), legend.text = element_text(size = 20)) +
+  scale_y_continuous(trans = 'log2')
+
+
+all_isolates_deletions_windows_plot_family + 
+  geom_point(data = combined_data_deletions_windows_coloured_family, aes(color = pilS), 
+             shape = 1, size = 3) +
+  scale_color_manual(values = c("yes" = "#ee7733", "no" = "#FFFFFF00"), labels = c("Rest of Genome", "pilS")) +
+  labs(color = "pilS")
+
+plot(all_isolates_deletions_windows_plot_carriage_disease)
+plot(all_isolates_deletions_windows_plot_family)
+```
+
+Nanopore vs Illumina 
+```{r, out.width="50%", fig.width=10, fig.height=8, dpi=300, echo = FALSE}
+
+library(ggplot2)
+setwd("/NGS/active/IPL/MENINGO/analysis/paloma/ONT_vs_Illumina") 
+
+ONT_HAC_doc_by_gc = read.table("lambda_ONT_HAC_gc_by_median_cov_100_bp_window", header=T, sep = "\t") 
+gc_bin_order = c('0_10', '11_20', '21_30','31_40','41_50','51_60','61_70','71_80','81_90','91_100') 
+ONT_HAC_doc_by_gc$gc_bin = factor(ONT_HAC_doc_by_gc$gc_bin, levels = gc_bin_order) 
+ONT_HAC_doc_by_gc_plot_final = ggplot(ONT_HAC_doc_by_gc, aes(x = gc_bin, y = median_doc)) +geom_boxplot(fill = "#ee7733", col = "black") +
+  theme_bw() + labs(title="Depth of Coverage by GC Content for Lambda High Accuracy Base Called ONT", x="GC Bin", y="Median Depth of Coverage") +
+  theme(axis.text.x = element_text(size = 12, angle = 45, hjust = 1), axis.title = element_text(size = 14), axis.text = element_text(size = 12), plot.title = element_text(size = 15))
+
+
+ONT_SHA_doc_by_gc = read.table("lambda_ONT_SHA_gc_by_median_cov_100_bp_window", header=T, sep = "\t") 
+gc_bin_order = c('0_10', '11_20', '21_30','31_40','41_50','51_60','61_70','71_80','81_90','91_100') 
+ONT_SHA_doc_by_gc$gc_bin = factor(ONT_SHA_doc_by_gc$gc_bin, levels = gc_bin_order) 
+ONT_SHA_doc_by_gc_plot_final = ggplot(ONT_SHA_doc_by_gc, aes(x = gc_bin, y = median_doc)) +geom_boxplot(fill = "#ee7733", col = "black") +
+  theme_bw() + labs(title="Depth of Coverage by GC Content for Lambda Super High Accuracy Base Called ONT", x="GC Bin", y="Median Depth of Coverage") +
+  theme(axis.text.x = element_text(size = 12, angle = 45, hjust = 1), axis.title = element_text(size = 14), axis.text = element_text(size = 12), plot.title = element_text(size = 15))
+
+
+ONT_NZ97021_SHA_doc_by_gc = read.table("NZ97021_kit14_SHA_gc_by_median_cov_100_bp_window", header=T, sep = "\t") 
+gc_bin_order = c('0_10', '11_20', '21_30','31_40','41_50','51_60','61_70','71_80','81_90','91_100') 
+ONT_NZ97021_SHA_doc_by_gc$gc_bin = factor(ONT_NZ97021_SHA_doc_by_gc$gc_bin, levels = gc_bin_order) 
+ONT_NZ97021_SHA_doc_by_gc_plot_final = ggplot(ONT_NZ97021_SHA_doc_by_gc, aes(x = gc_bin, y = median_doc)) +geom_boxplot(fill = "#ee7733", col = "black") +
+  theme_bw() + labs(title="Depth of Coverage by GC Content for NZ97021 Super High Accuracy Base Called ONT", x="GC Bin", y="Median Depth of Coverage") +
+  theme(axis.text.x = element_text(size = 12, angle = 45, hjust = 1), axis.title = element_text(size = 14), axis.text = element_text(size = 12), plot.title = element_text(size = 15))
+
+ONT_NZ97019_SHA_doc_by_gc = read.table("NZ97019_kit14_SHA_gc_by_median_cov_100_bp_window", header=T, sep = "\t") 
+gc_bin_order = c('0_10', '11_20', '21_30','31_40','41_50','51_60','61_70','71_80','81_90','91_100') 
+ONT_NZ97019_SHA_doc_by_gc$gc_bin = factor(ONT_NZ97019_SHA_doc_by_gc$gc_bin, levels = gc_bin_order) 
+ONT_NZ97019_SHA_doc_by_gc_plot_final = ggplot(ONT_NZ97019_SHA_doc_by_gc, aes(x = gc_bin, y = median_doc)) +geom_boxplot(fill = "#ee7733", col = "black") +
+  theme_bw() + labs(title="Depth of Coverage by GC Content for NZ97019 Super High Accuracy Base Called ONT", x="GC Bin", y="Median Depth of Coverage") +
+  theme(axis.text.x = element_text(size = 12, angle = 45, hjust = 1), axis.title = element_text(size = 14), axis.text = element_text(size = 12), plot.title = element_text(size = 15))
+
+plot (ONT_HAC_doc_by_gc_plot_final) 
+plot (ONT_SHA_doc_by_gc_plot_final)
+plot(ONT_NZ97021_SHA_doc_by_gc_plot_final)
+plot(ONT_NZ97019_SHA_doc_by_gc_plot_final)
+
+HAC_GCpercent_100bp_windows_plot = ggplot(ONT_HAC_doc_by_gc, aes(x=gc_percent)) + geom_histogram(binwidth=5, color="white", fill="#ee7733") + 
+  labs(title="GC Percent per 100bp Sliding Window Lambda High Accuracy Base Calling ONT", x="GC%", y="Number of 100bp Windows")  +
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 12, angle = 45, hjust = 1), axis.title = element_text(size = 14), axis.text = element_text(size = 12), plot.title = element_text(size = 15))
+
+SHA_GCpercent_100bp_windows_plot = ggplot(ONT_SHA_doc_by_gc, aes(x=gc_percent)) + geom_histogram(binwidth=5, color="white", fill="#ee7733") + 
+  labs(title="GC Percent per 100bp Sliding Window Lambda Super High Accuracy Base Calling ONT", x="GC%", y="Number of 100bp Windows")  +
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 12, angle = 45, hjust = 1), axis.title = element_text(size = 14), axis.text = element_text(size = 12), plot.title = element_text(size = 15))
+
+NZ97021_SHA_GCpercent_100bp_windows_plot = ggplot(ONT_NZ97021_SHA_doc_by_gc, aes(x=gc_percent)) + geom_histogram(binwidth=5, color="white", fill="#ee7733") + 
+  labs(title="GC Percent per 100bp Sliding Window NZ97021 Super High Accuracy Base Calling ONT", x="GC%", y="Number of 100bp Windows") +
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 12, angle = 45, hjust = 1), axis.title = element_text(size = 14), axis.text = element_text(size = 12), plot.title = element_text(size = 15))
+
+NZ97019_SHA_GCpercent_100bp_windows_plot = ggplot(ONT_NZ97019_SHA_doc_by_gc, aes(x=gc_percent)) + geom_histogram(binwidth=5, color="white", fill="#ee7733") + 
+  labs(title="GC Percent per 100bp Sliding Window NZ97019 Super High Accuracy Base Calling ONT", x="GC%", y="Number of 100bp Windows") +
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 12, angle = 45, hjust = 1), axis.title = element_text(size = 14), axis.text = element_text(size = 12), plot.title = element_text(size = 15))
+
+plot (HAC_GCpercent_100bp_windows_plot) 
+plot (SHA_GCpercent_100bp_windows_plot)
+plot (NZ97021_SHA_GCpercent_100bp_windows_plot)
+plot(NZ97019_SHA_GCpercent_100bp_windows_plot)
+
+
+```
