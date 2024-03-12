@@ -342,8 +342,33 @@ Graphs can be made for each isolate and use the averages_per_window.txt file gen
 library(ggplot2)
 library(patchwork)
 
+#Load the averages_per_window.txt file for each isolate and save as a variable name, ensure correct path is set
+NZ96294_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZ96294/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM148_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM148/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM149_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM149/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZ97019_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZ97019/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM162_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM162/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZ97021_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZ97021/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM165_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM165/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZ97052_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZ97052/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM111_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM111/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM112_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM112/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZ97133_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZ97133/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM132_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM132/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM133_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM133/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM134_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM134/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM135_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM135/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZ97192_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZ97192/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM238_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM238/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM239_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM239/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM240_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM240/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZ98058_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZ98058/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM246_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM246/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZ98074_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZ98074/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+NZCM245_deletions_windows = read.table("/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZCM245/deletions/averages_per_window.txt", sep="\t", header=TRUE)
+
 ###Set variables###
-averages_per_window <- "/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZ96294/deletions/averages_per_window.txt" #set the path to the averages_per_window.txt file for each isolate this example is for isolate NZ96294
+deletions_windows = NZ96294_deletions_windows #set which isolate you are building graph for this example is isolate NZ96294 
 pilS_start <- 625149 #set the pilS region for the specific isolate this example is NZ96294
 pilS_end <- 633833 #set the pilS region for the specific isolate this example is NZ96294
 
@@ -409,7 +434,11 @@ deletions_var_plot_zoomed = ggplot(deletions_windows, aes(x = position, y = samp
 ```
 
 
-box plot of variances per 10kb window for each isolate 
+Make a box plot of the variance of each 10kb window for each isolate \
+The windows containing the pilS region are coloured, the other windows are grey \
+Makes two plots, one organised by carriage vs disease and the other organised in household groups \
+
+This script requires that a deletions_windows file has been made for each isolate (see script above) and is saved in the same environment
 
 ```{r, out.width="50%", fig.width=18, fig.height=13, dpi=300, echo = FALSE}
 library (ggplot2)
