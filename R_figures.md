@@ -1,121 +1,30 @@
----
-title: "R_figures"
-author: "Paloma Gea"
-date: "`r Sys.Date()`"
-output: html_document
----
 
-## Code
+# R Markdown Code to Generate Figures
 
-Make Graphs for each isolate to show recombination across pilS 
+**Author:** Paloma Gea
+
+
+## To be used in R markdown
+
+Graph to show the change in depth across the pilS region to identify isolates with a deletion in this region
+All reads spanning across pilS were extracted and the depth calculated at each position in pilS
+Depth should be constant throughout the pilS region; change in depth indicateds a deletion
+
+Isolate and path to the pilS_depths.txt file need to be set 
 
 ```{r, out.width="90%", fig.width=20, fig.height=13, dpi=300, echo = FALSE}
 library(ggplot2) 
 library(patchwork)
 
-NZ96294_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ96294/NZ96294_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZ96294_pilS_depth$position_adjusted = NZ96294_pilS_depth$position - min(NZ96294_pilS_depth$position) 
-NZ96294_pilS_depth_plot = ggplot(NZ96294_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ96294 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+###Set the variables###
+isolate <- "NZ96294" #Change for each isolate 
+pilS_depth_txt <- "/home/Genomic-Organisation-of-MeningococcaL-pilS-in-Carriage-and-Disease/NZ96294/NZ96294_pilS_depths.txt" #Change to the path where the pilS_depths.txt file is stored for that isolate
 
-NZCM149_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM149/NZCM149_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM149_pilS_depth$position_adjusted = NZCM149_pilS_depth$position - min(NZCM149_pilS_depth$position) 
-NZCM149_pilS_depth_plot = ggplot(NZCM149_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM149 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
+pilS_depth = read.table(pilS_depth_txt, sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
+pilS_depth$position_adjusted = pilS_depth$position - min(pilS_depth$position) 
+pilS_depth_plot = ggplot(pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
 
-NZCM148_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM148/NZCM148_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM148_pilS_depth$position_adjusted = NZCM148_pilS_depth$position - min(NZCM148_pilS_depth$position) 
-NZCM148_pilS_depth_plot = ggplot(NZCM148_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM148 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZ97019_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97019/NZ97019_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZ97019_pilS_depth$position_adjusted = NZ97019_pilS_depth$position - min(NZ97019_pilS_depth$position) 
-NZ97019_pilS_depth_plot = ggplot(NZ97019_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ97019 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM162_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM162/NZCM162_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM162_pilS_depth$position_adjusted = NZCM162_pilS_depth$position - min(NZCM162_pilS_depth$position) 
-NZCM162_pilS_depth_plot = ggplot(NZCM162_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM162 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZ97021_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97021/NZ97021_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZ97021_pilS_depth$position_adjusted = NZ97021_pilS_depth$position - min(NZ97021_pilS_depth$position) 
-NZ97021_pilS_depth_plot = ggplot(NZ97021_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ97021 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM165_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM165/NZCM165_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM165_pilS_depth$position_adjusted = NZCM165_pilS_depth$position - min(NZCM165_pilS_depth$position) 
-NZCM165_pilS_depth_plot = ggplot(NZCM165_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM165 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZ97052_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97052/NZ97052_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZ97052_pilS_depth$position_adjusted = NZ97052_pilS_depth$position - min(NZ97052_pilS_depth$position) 
-NZ97052_pilS_depth_plot = ggplot(NZ97052_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ97052 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM111_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM111/NZCM111_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM111_pilS_depth$position_adjusted = NZCM111_pilS_depth$position - min(NZCM111_pilS_depth$position) 
-NZCM111_pilS_depth_plot = ggplot(NZCM111_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM111 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM112_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM112/NZCM112_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM112_pilS_depth$position_adjusted = NZCM112_pilS_depth$position - min(NZCM112_pilS_depth$position) 
-NZCM112_pilS_depth_plot = ggplot(NZCM112_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM112 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZ97133_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97133/NZ97133_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZ97133_pilS_depth$position_adjusted = NZ97133_pilS_depth$position - min(NZ97133_pilS_depth$position) 
-NZ97133_pilS_depth_plot = ggplot(NZ97133_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ97133 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM132_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM132/NZCM132_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM132_pilS_depth$position_adjusted = NZCM132_pilS_depth$position - min(NZCM132_pilS_depth$position) 
-NZCM132_pilS_depth_plot = ggplot(NZCM132_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM132 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM133_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM133/NZCM133_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM133_pilS_depth$position_adjusted = NZCM133_pilS_depth$position - min(NZCM133_pilS_depth$position) 
-NZCM133_pilS_depth_plot = ggplot(NZCM133_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM133 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM134_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM134/NZCM134_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM134_pilS_depth$position_adjusted = NZCM134_pilS_depth$position - min(NZCM134_pilS_depth$position) 
-NZCM134_pilS_depth_plot = ggplot(NZCM134_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM134 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM135_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM135/NZCM135_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM135_pilS_depth$position_adjusted = NZCM135_pilS_depth$position - min(NZCM135_pilS_depth$position) 
-NZCM135_pilS_depth_plot = ggplot(NZCM135_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM135 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZ97192_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ97192/NZ97192_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZ97192_pilS_depth$position_adjusted = NZ97192_pilS_depth$position - min(NZ97192_pilS_depth$position) 
-NZ97192_pilS_depth_plot = ggplot(NZ97192_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ97192 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM238_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM238/NZCM238_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM238_pilS_depth$position_adjusted = NZCM238_pilS_depth$position - min(NZCM238_pilS_depth$position) 
-NZCM238_pilS_depth_plot = ggplot(NZCM238_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM238 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM239_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM239/NZCM239_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM239_pilS_depth$position_adjusted = NZCM239_pilS_depth$position - min(NZCM239_pilS_depth$position) 
-NZCM239_pilS_depth_plot = ggplot(NZCM239_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM239 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM240_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM240/NZCM240_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM240_pilS_depth$position_adjusted = NZCM240_pilS_depth$position - min(NZCM240_pilS_depth$position) 
-NZCM240_pilS_depth_plot = ggplot(NZCM240_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM240 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZ98058_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98058/NZ98058_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZ98058_pilS_depth$position_adjusted = NZ98058_pilS_depth$position - min(NZ98058_pilS_depth$position) 
-NZ98058_pilS_depth_plot = ggplot(NZ98058_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ98058 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM246_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM246/NZCM246_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM246_pilS_depth$position_adjusted = NZCM246_pilS_depth$position - min(NZCM246_pilS_depth$position) 
-NZCM246_pilS_depth_plot = ggplot(NZCM246_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM246 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZ98074_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZ98074/NZ98074_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZ98074_pilS_depth$position_adjusted = NZ98074_pilS_depth$position - min(NZ98074_pilS_depth$position) 
-NZ98074_pilS_depth_plot = ggplot(NZ98074_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZ98074 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-NZCM245_pilS_depth = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/NZCM245/NZCM245_pilS_depths.txt", sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
-NZCM245_pilS_depth$position_adjusted = NZCM245_pilS_depth$position - min(NZCM245_pilS_depth$position) 
-NZCM245_pilS_depth_plot = ggplot(NZCM245_pilS_depth, aes(x=position_adjusted, y=depth, group=contig, color=contig)) + geom_line(color = "#ee7733") + labs(title="Depth of Coverage Across NZCM245 pilS", x="Position", y="Depth") + theme_minimal() + theme(axis.text = element_text(size = 10), legend.position = "none")  
-
-
-all_isolates_depth_plot = (NZ96294_pilS_depth_plot | NZCM149_pilS_depth_plot |  NZCM148_pilS_depth_plot | plot_spacer() | plot_spacer())/ 
-  (NZ97019_pilS_depth_plot | NZCM162_pilS_depth_plot | plot_spacer() | plot_spacer() | plot_spacer())/
-  (NZ97021_pilS_depth_plot | NZCM165_pilS_depth_plot | plot_spacer() | plot_spacer() | plot_spacer())/
-  (NZ97052_pilS_depth_plot | NZCM111_pilS_depth_plot | NZCM112_pilS_depth_plot | plot_spacer() | plot_spacer())/
-  (NZ97133_pilS_depth_plot | NZCM132_pilS_depth_plot | NZCM133_pilS_depth_plot | NZCM134_pilS_depth_plot | NZCM135_pilS_depth_plot)/
-  (NZ97192_pilS_depth_plot | NZCM238_pilS_depth_plot | NZCM239_pilS_depth_plot | NZCM240_pilS_depth_plot | plot_spacer())/
-  (NZ98058_pilS_depth_plot | NZCM246_pilS_depth_plot | plot_spacer() | plot_spacer() | plot_spacer())/
-  (NZ98074_pilS_depth_plot | NZCM245_pilS_depth_plot | plot_spacer() | plot_spacer() | plot_spacer())
-
-plot(all_isolates_depth_plot)
+plot(pilS_depth_plot)
 
 ```
 
