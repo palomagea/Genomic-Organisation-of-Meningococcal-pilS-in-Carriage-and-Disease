@@ -3,7 +3,7 @@
 title: "R_Figures"
 author: "Paloma Gea"
 date: "`r Sys.Date()`"
-output: html_document
+output: github_document
 ---
 
 Graph a scatter plot of the length of the pilS region and number of pilS cassettes from a csv file\
