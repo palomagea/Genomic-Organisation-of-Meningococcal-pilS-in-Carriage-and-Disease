@@ -6,8 +6,8 @@
 
 ## To be used in R markdown
 
-Graph to show the change in depth across the pilS region to identify isolates with a deletion in this region
-All reads spanning across pilS were extracted and the depth calculated at each position in pilS
+Graph to show the change in depth across the pilS region to identify isolates with a deletion in this region\
+All reads spanning across pilS were extracted and the depth calculated at each position in pilS\
 Depth should be constant throughout the pilS region; change in depth indicateds a deletion
 
 Isolate and path to the pilS_depths.txt file need to be set 
@@ -29,7 +29,11 @@ plot(pilS_depth_plot)
 ```
 
 
-Make pilS comparison scatter plot
+Graph a scatter plot of the length of the pilS region and number of pilS cassettes from a csv file\
+Set disease assoicated isolates as oranges Xs and carriage associated isolates as blue Os\
+
+Need to make a csv file "pilS_comparisons.csv containing the length of the pilS region (inlcuding fbp and lpxC without the 1kb buffer) and number of silent cassettes from the consensus annotation 
+
 ```{r, out.width="50%", fig.width=10, fig.height=5, dpi=300, echo = FALSE}
 library(ggplot2) 
 pilS_comparison = read.table("/NGS/active/IPL/MENINGO/analysis/paloma/2023/pilS_comparisons.csv", header=T, sep = ",") 
