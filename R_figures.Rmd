@@ -169,7 +169,7 @@ library(ggplot2)
 library(dplyr)
 
 ###Set the variables###
-assembly_stats_csv <- "home/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/ #csv file path only needs to be changed if moved
+assembly_stats_csv <- "/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/assembly_stats.csv" #csv file path only needs to be changed if moved
 
 assembly_stats = read.table(assembly_stats_csv, header=T, sep = ",") 
 assembly_stats_fixed = as.data.frame(apply(assembly_stats, 2, function(x) gsub("\\st", "", x)))
@@ -318,7 +318,6 @@ library(ggplot2)
 library(patchwork)
 
 ###Set the variables###
-isolate <- "NZ96294" #Change for each isolate 
 pilS_depth_txt <- "/Genomic-Organisation-of-Meningococcal-pilS-in-Carriage-and-Disease/NZ96294/NZ96294_pilS_depths.txt" #Change to the path where the pilS_depths.txt file is stored for that isolate
 
 pilS_depth = read.table(pilS_depth_txt, sep="\t", header=FALSE, col.names=c("contig", "position", "depth")) 
@@ -372,7 +371,6 @@ deletions_windows = NZ96294_deletions_windows #set which isolate you are buildin
 pilS_start <- 625149 #set the pilS region for the specific isolate this example is NZ96294
 pilS_end <- 633833 #set the pilS region for the specific isolate this example is NZ96294
 
-deletions_windows = read.table(averages_per_window, sep="\t", header=TRUE)
 start_positions <- gsub("window_(\\d+)_(\\d+)", "\\1", deletions_windows$window)
 start_positions <- as.numeric(start_positions)
 deletions_windows$position <- start_positions
