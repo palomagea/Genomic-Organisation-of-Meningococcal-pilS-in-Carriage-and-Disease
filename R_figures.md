@@ -1,10 +1,11 @@
 
-# R Markdown Code to Generate Figures
+---
+title: "R_Figures"
+author: "Paloma Gea"
+date: "`r Sys.Date()`"
+output: html_document
+---
 
-**Author:** Paloma Gea
-
-
-## To be used in R markdown
 
 Graph to show the change in depth across the pilS region to identify isolates with a deletion in this region\
 All reads spanning across pilS were extracted and the depth calculated at each position in pilS\
